@@ -6,16 +6,20 @@
 
   <%= "Nenhum diretor cadastrado" if @directors.empty? %>
 
-  <div>
+  <div class='directors-list'>
     <% @directors.each do |director| %>
 
       <div class='single-director'>
+        <div class='director-info'>
+          <h3><%= director.name %></h3>
+          
+          <%= link_to "Ver Mais", director_path(director), class: "btn-show-more" %>
 
-        <p><%= director.name %> - <%= director.nacionality %></p>
+          <div class='director-actions'>
+            <%= link_to "Editar", edit_director_path(director), class: "btn-edit" %>
+            <%= link_to "Excluir", director_path(director), data: {turbo_method: :delete, turbo_confirm: "Confirmar exclusão do diretor?"}, class: "btn-delete" %>
+          </div>
 
-        <div class='director-actions'>
-          <%= link_to "Editar", edit_director_path(director) %>
-          <%= link_to "Excluir", director_path(director), data: {turbo_method: :delete, turbo_confirm: "Confirmar exclusão do diretor?"} %>
         </div>
 
       </div>
