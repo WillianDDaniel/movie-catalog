@@ -1,7 +1,24 @@
-<%= form_with model: @genre do |form|%>
-    <div>
-        <%= form.label :name%>
-        <%= form.text_field :name%>
+<%= stylesheet_link_tag "edit-genre", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "back-button", "data-turbo-track": "reload" %>
+
+<div class="genres-container">
+  <h2>Editar Gênero</h2>
+
+  <%= link_to genres_path, class: "back-link" do %>
+    <div class='back'>
+      <img src="/imgs/blue-back-arrow.png" alt="Voltar">
+      Voltar
     </div>
-    <%= form.submit "Editar"%>
-<% end %>
+  <% end %>
+
+  <%= form_with model: @genre do |form| %>
+    <div>
+      <%= form.label :name, "Nome do Gênero" %>
+      <%= form.text_field :name %>
+    </div>
+    <div>
+      <%= form.submit "Salvar", class: "btn-save" %>
+    </div>
+  <% end %>
+</div>
+

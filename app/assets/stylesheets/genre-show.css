@@ -1,0 +1,105 @@
+.genre-show-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+.genre-show-container h1 {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.single-genre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.genre-info {
+    margin-bottom: 20px;
+}
+
+.genre-actions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.genre-movies {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.genre-movies h3 {
+    margin-bottom: 15px;
+}
+
+.movie-link {
+    text-decoration: none;
+    font-size: 1rem;
+    color: #007bff;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.movie-link:hover {
+    color: #0561c4;
+    transform: scale(1.02);
+}
+
+.btn-back {
+    margin-bottom: 20px;
+    padding: 5px 15px;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btn-back:hover {
+    background-color: #0561c4;
+    transform: scale(1.02);
+}
+
+.btn-edit,
+.btn-delete {
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+    width: 45%;
+    text-align: center;
+}
+
+.btn-edit {
+    background-color: #c79600;
+}
+
+.btn-edit:hover {
+    background-color: #a17800;
+    transform: scale(1.02);
+}
+
+.btn-delete {
+    background-color: #dc3545;
+}
+
+.btn-delete:hover {
+    background-color: #b02a37;
+    transform: scale(1.02);
+}

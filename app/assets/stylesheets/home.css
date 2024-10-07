@@ -18,59 +18,78 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid #333;
+    border: none;
     border-radius: 10px;
+}
+
+.actions-container div:hover {
+    border: 1px solid #148ce1;
 }
 
 .home-title {
     margin-top: 20px;
     margin-bottom: 10px;
+    background-color: rgba(0, 0, 0, 0, 0.5);
+    color: #fff;
 }
 
 .home-description {
     margin-bottom: 20px;
     font-size: 1.3rem;
+    color: #fff;
 }
 
 .add-films {
     background-image: url('/imgs/movie.png');
+    background-color: #fff;
     background-size: cover;
 }
 
 .add-directors {
     background-image: url('/imgs/director.png');
+    background-color: #fff;
     background-size: cover;
 }
 
 .add-genres {
     background-image: url('/imgs/genres.png');
+    background-color: #fff;
     background-size: cover;
 }
 
 .actions-container h3 {
-    font-size: 20px;
+    font-size: 1.15rem;
     font-weight: bold;
+    padding: 7px;
     width: 100%;
     background-color: #fff;
     text-align: center;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    color: #000a52;
 }
 
 .action-btn {
     text-decoration: none;
     color: #fff;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
-    background-color: rgb(33, 33, 33);
+    background-color: rgb(84, 195, 223);
     border-radius: 5px;
     width: 80%;
     text-align: center;
     padding: 2px 5px;
-    margin-bottom: 3px;
+    margin-bottom: 7px;
+    box-shadow: 1px 1px 5px 2px rgba(84, 195, 223, 0.5);
+}
+
+.action-btn:hover {
+    background-color: #148ce1;
+    transform: scale(1.02);
 }
 
 .bottom-msg {
     margin-top: 20px;
     font-size: 1.3rem;
+    color: #fff;
 }

@@ -1,0 +1,31 @@
+.back {
+    display: flex;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    align-items: center;
+    padding: 10px;
+    background-color: #54c3df;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+    color: #fff;
+    font-weight: 600;
+}
+
+.back img {
+    width: 20px;
+    height: 20px;
+    transform: rotate(180deg);
+    margin-right: 10px;
+}
+
+.back-link {
+    display: block;
+    text-decoration: none;
+    color: inherit; /* Para manter a cor do texto original */
+}
+
+.back:hover {
+    background-color: #0561c4;
+    transform: scale(1.02);
+}

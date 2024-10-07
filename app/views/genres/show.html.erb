@@ -1,11 +1,27 @@
-<%= link_to "voltar", root_path%>
-<h1><%= @genre.name%></h1> 
+<%= stylesheet_link_tag "genre-show", "data-turbo-track": "reload" %>
 
-<div>
-    <%= link_to "editar", edit_genre_path(@genre)%>
-    <%= link_to "deletar", genre_path(@genre), data: {turbo_method: :delete, turbo_confirm: "Are you sure"}%>
+<div class='genre-show-container'>
+  <%= link_to "Voltar", genres_path, class: "btn-back" %>
+
+  <div class='single-genre'>
+    <div class='genre-info'>
+      <h1><%= @genre.name %></h1>
+    </div>
+
+    <div class='genre-actions'>
+      <%= link_to "Editar", edit_genre_path(@genre), class: "btn-edit" %>
+      <%= link_to "Excluir", genre_path(@genre), data: {turbo_method: :delete, turbo_confirm: "Tem certeza que deseja excluir este gênero?"}, class: "btn-delete" %>
+    </div>
+
+    <div class='genre-movies'>
+      <h3>Filmes deste Gênero</h3>
+      <% if @genre.movies.any? %>
+        <% @genre.movies.each do |movie| %>
+          <%= link_to movie.title, movie_path(movie), class: "movie-link" %>
+        <% end %>
+      <% else %>
+        <p>Nenhum filme cadastrado para este gênero.</p>
+      <% end %>
+    </div>
+  </div>
 </div>
-
-<% @genre.movies.each do |movie|%>
-    <%= link_to movie.title, movie_path(movie)%>
-<% end %>

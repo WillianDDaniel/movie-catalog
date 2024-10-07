@@ -34,7 +34,7 @@ class GenresController < ApplicationController
     id = params[:id]
     genre = Genre.find(id)
     if genre.delete
-      redirect_to root_path
+      redirect_to genres_path
     end
   end
 end

@@ -7,6 +7,7 @@
 
 .genres-container h2 {
     margin: 20px;
+    color: #fff;
 }
 
 .single-genre {
@@ -17,6 +18,17 @@
     padding: 10px;
     border: 1px solid #333;
     border-radius: 10px;
+    background-color: #f9f9f9;
+    width: 200px;
+}
+
+.genre-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
 }
 
 .genre-actions {
@@ -24,4 +36,33 @@
     justify-content: space-between;
     width: 100px;
     margin-top: 10px;
+    width: 100%;
+    gap: 10px;
+}
+
+.genre-actions a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-edit {
+    background-color: #c79600;
+    width: 40%;
+    flex: 1;
+}
+
+.btn-edit:hover {
+    background-color: #a17800;
+    transform: scale(1.02);
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    width: 40%;
+    flex: 1;
+}
+
+.btn-delete:hover {
+    background-color: #b02a37;
+    transform: scale(1.02);
 }

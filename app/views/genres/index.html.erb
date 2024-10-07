@@ -6,17 +6,21 @@
 
   <%= "Nenhum gênero cadastrado" if @genres.empty? %>
 
-  <div>
+  <div class='genres-list'>
     <% @genres.each do |genre| %>
 
       <div class='single-genre'>
-        <p><%= genre.name %></p>
+        <div class='genre-info'>
+          <p><%= genre.name %></p>
 
-        <div class='genre-actions'>
-          <%= link_to "Editar", edit_genre_path(genre) %>
-          <%= link_to "Excluir", genre_path(genre), data: {turbo_method: :delete, turbo_confirm: "Confirmar exclusão do gênero?"} %>
+          <%= link_to "Ver Mais", genre_path(genre), class: "btn-show-more" %>
+
+          <div class='genre-actions'>
+            <%= link_to "Editar", edit_genre_path(genre), class: "btn-edit" %>
+            <%= link_to "Excluir", genre_path(genre), data: {turbo_method: :delete, turbo_confirm: "Confirmar exclusão do gênero?"}, class: "btn-delete" %>
+          </div>
+
         </div>
-
       </div>
 
     <% end %>

@@ -1,10 +1,17 @@
 <%= stylesheet_link_tag "new-director", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "back-button", "data-turbo-track": "reload" %>
 
 <section class='new-director-container'>
 
-  <h2>Cadastrar Diretor</h2>
+  <h2>Cadastrar novo Diretor</h2>
 
-  <%= link_to "Voltar", root_path, class: "back-link" %>
+  <%= link_to root_path, class: "back-link" do %>
+    <div class='back'>
+      <img src="/imgs/blue-back-arrow.png" alt="Voltar">
+      Voltar
+    </div>
+  <% end %>
+
 
   <%= form_with model: @director do |form| %>
 

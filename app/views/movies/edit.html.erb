@@ -1,9 +1,15 @@
 <%= stylesheet_link_tag "edit-movie", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "back-button", "data-turbo-track": "reload" %>
 
 <section class='edit-movie-container'>
     <h2>Editar Filme</h2>
 
-    <%= link_to "Voltar", root_path, class: "btn-back" %>
+    <%= link_to movies_path, class: "back-link" do %>
+      <div class='back'>
+        <img src="/imgs/blue-back-arrow.png" alt="Voltar">
+        Voltar
+      </div>
+    <% end %>
 
     <%= form_with model: @movie do |form| %>
         <div class="movie-title">

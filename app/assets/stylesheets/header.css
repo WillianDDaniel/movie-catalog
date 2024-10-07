@@ -7,12 +7,17 @@
     font-family: 'Roboto', 'sans-serif';
 }
 
+body {
+    background-image: url('/imgs/background.jpg');
+    background-size: cover;
+}
+
 .nav-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: #333;
+    background-color: rgba(0, 0, 0, 0.75);
     color: #fff;
 }
 

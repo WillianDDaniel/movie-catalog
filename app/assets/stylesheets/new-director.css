@@ -4,10 +4,12 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    position: relative;
 }
 
 .new-director-container h2 {
     margin: 20px;
+    color: #fff;
 }
 
 .new-director-container form {
@@ -15,11 +17,12 @@
     width: 60%;
     justify-content: center;
     align-items: center;
-    background-color: rgb(187, 187, 187);
+    background-color: rgb(197, 238, 245);
     padding: 20px 0px;
     flex-wrap: wrap;
     gap: 15px;
     border-radius: 5px;
+    box-shadow: 2px 2px 9px 2px rgba(0, 0, 0, 0.7);
 }
 
 .new-director-container form div {
@@ -42,7 +45,7 @@
 }
 
 .director-name, .director-nacionality, .director-birthdate, .director-favorite-genre {
-    width: 45%;
+    width: 43%;
 }
 
 .submit-container {
@@ -53,10 +56,11 @@
 }
 
 .submit-button {
-    width: 90%;
+    width: 88%;
     height: 30px;
 }
 
-.back-link {
-    margin-bottom: 15px;
+.submit-button:hover {
+    background-color: #0561c4;
+    transform: scale(1.009);
 }

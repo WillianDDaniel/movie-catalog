@@ -1,12 +1,27 @@
-<%= link_to "voltar", root_path%>
-<h1><%= @director.name%></h1>
-<div>
-    <%= link_to "editar", edit_director_path(@director)%>
-    <%= link_to "deletar", director_path(@director), data: {turbo_method: :delete, turbo_confirm: "tem certeza que deseja apagar este diretor?"}%>
+<%= stylesheet_link_tag "director-show", "data-turbo-track": "reload" %>
+
+<div class='director-show-container'>
+
+  <%= link_to "Voltar", directors_path, class: "btn-back" %>
+
+  <div class='single-director'>
+    <div class='director-info'>
+      <h2><%= @director.name %></h2>
+      <p><strong>Nacionalidade:</strong> <%= @director.nacionality %></p>
+      <p><strong>Data de Nascimento:</strong> <%= @director.birthdate.strftime("%d/%m/%Y") %></p>
+      <p><strong>Gênero Favorito:</strong> <%= @director.favorite_genre.name if @director.favorite_genre %></p>
+    </div>
+
+    <div class='director-actions'>
+      <%= link_to "Editar", edit_director_path(@director), class: "btn-edit" %>
+      <%= link_to "Excluir", director_path(@director), data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja apagar este diretor?" }, class: "btn-delete" %>
+    </div>
+  </div>
+
+  <h3>Filmes do Diretor</h3>
+  <div class='director-movies'>
+    <% @director.movies.each do |movie| %>
+      <p><%= link_to movie.title, movie_path(movie) %></p>
+    <% end %>
+  </div>
 </div>
-<p><%= @director.nacionality%></p>
-<p><%= @director.birthdate%></p>
-<p><%= @director.favorite_genre.name%></p>
-<% @director.movies.each do |movie|%>
-    <%= link_to movie.title, movie_path(movie)%>
-<% end %>
