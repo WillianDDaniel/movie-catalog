@@ -1,37 +1,58 @@
-<%= link_to "Voltar", root_path%>
-<%= form_with model: @movie do |form|%>
-    <div>
-        <%= form.label :title%>
-        <%= form.text_field :title%>
-    </div>
+<%= stylesheet_link_tag "edit-movie", "data-turbo-track": "reload" %>
 
-    <div>
-        <%= form.label "Ano de lançamento"%>
-        <%= form.select :year, options_for_select((Date.today.year - 20..Date.today.year + 5))%>
-    </div>
-    <div>
-        <%= form.label "sinópse"%>
-        <%= form.text_area :synopsis%>
-    </div>
-    <div>
-        <%= form.label "Pais"%>
-        <%= form.text_field :country%>
-    </div>
-    <div>
-        <%= form.label "Duração em minutos"%>
-        <%= form.number_field :duration%>
-    </div>
-    <div>
-        <%= form.label "rascunho"%>
-        <%= form.check_box :isSketch, {checked: true}%>
-    </div>
-    <div>
-        <%= form.label "Diretor"%>
-        <%= form.collection_select :director_id, Director.order(:name), :id, :name %>
-    </div>
-    <div>
-        <%= form.label "Gênero"%>
-        <%= form.collection_select :genre_id, Genre.order(:name), :id, :name%>
-    </div>
-    <%= form.submit "Criar"%>
-<% end %>
+<section class='edit-movie-container'>
+    <h2>Editar Filme</h2>
+
+    <%= link_to "Voltar", root_path, class: "btn-back" %>
+
+    <%= form_with model: @movie do |form| %>
+        <div class="movie-title">
+            <%= form.label :title, "Nome do Filme" %>
+            <%= form.text_field :title %>
+        </div>
+
+        <div class="isSketch">
+            <%= form.label :isSketch, "É Rascunho?" %>
+            <%= form.check_box :isSketch %>
+        </div>
+
+        <div class="year">
+            <%= form.label :year, "Ano de Lançamento" %>
+            <%= form.select :year, options_for_select((1895..Date.today.year)), prompt: "Selecione..." %>
+        </div>
+
+        <div class="country">
+            <%= form.label :country, "País" %>
+            <%= form.text_field :country %>
+        </div>
+
+        <div class="duration">
+            <%= form.label :duration, "Duração em Minutos" %>
+            <%= form.number_field :duration %>
+        </div>
+
+        <div class="director">
+            <%= form.label :director_id, "Diretor" %>
+            <%= form.collection_select :director_id, Director.order(:name), :id, :name %>
+        </div>
+
+        <div class="genre">
+            <%= form.label :genre_id, "Gênero" %>
+            <%= form.collection_select :genre_id, Genre.order(:name), :id, :name %>
+        </div>
+
+        <div class="cover-url">
+            <%= form.label :cover_url, "URL da Capa" %>
+            <%= form.text_field :cover_url %>
+        </div>
+
+        <div class="synopsis">
+            <%= form.label :synopsis, "Sinopse:" %>
+            <%= form.text_area :synopsis, rows: 10, class: "synopsis-text-area" %>
+        </div>
+
+        <div class="submit-container">
+            <%= form.submit "Atualizar", class: "submit-button" %>
+        </div>
+    <% end %>
+</section>
