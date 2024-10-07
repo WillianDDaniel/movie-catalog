@@ -1,0 +1,7 @@
+<%= form_with model: @genre do |form|%>
+    <div>
+        <%= form.label :name%>
+        <%= form.text_field :name%>
+    </div>
+    <%= form.submit "Criar"%>
+<% end %>

@@ -1,0 +1,76 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.actions-container {
+    display: flex;
+    justify-content: center ;
+    align-items: center;
+    gap: 10px;
+}
+
+.actions-container div {
+    height: 180px;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #333;
+    border-radius: 10px;
+}
+
+.home-title {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.home-description {
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.add-films {
+    background-image: url('/imgs/movie.png');
+    background-size: cover;
+}
+
+.add-directors {
+    background-image: url('/imgs/director.png');
+    background-size: cover;
+}
+
+.add-genres {
+    background-image: url('/imgs/genres.png');
+    background-size: cover;
+}
+
+.actions-container h3 {
+    font-size: 20px;
+    font-weight: bold;
+    width: 100%;
+    background-color: #fff;
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.action-btn {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: rgb(33, 33, 33);
+    border-radius: 5px;
+    width: 80%;
+    text-align: center;
+    padding: 2px 5px;
+    margin-bottom: 3px;
+}
+
+.bottom-msg {
+    margin-top: 20px;
+    font-size: 1.3rem;
+}

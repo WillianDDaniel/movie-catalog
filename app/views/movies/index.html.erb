@@ -1,0 +1,26 @@
+<%= stylesheet_link_tag "movie", "data-turbo-track": "reload" %>
+
+<div class='movies-container'>
+
+  <h2>Catálogo de Filmes</h2>
+
+  <%= "Nenhum filme cadastrado" if @movies.empty? %>
+
+  <div>
+    <% @movies.each do |movie|%>
+
+      <div class='single-movie'>
+
+        <p><%= movie.title %></p>
+
+        <div class='movie-actions'>
+          <%= link_to "Editar", edit_movie_path(movie) %>
+          <%= link_to "Excluir", movie_path(movie), data: {turbo_method: :delete, turbo_confirm: "Confirmar exclusão do filme?"} %>
+        </div>
+
+      </div>
+
+    <% end %>
+  </div>
+
+</div>

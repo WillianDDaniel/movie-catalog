@@ -1,0 +1,37 @@
+<%= link_to "Voltar", root_path%>
+<%= form_with model: @movie do |form|%>
+    <div>
+        <%= form.label :title%>
+        <%= form.text_field :title%>
+    </div>
+
+    <div>
+        <%= form.label "Ano de lançamento"%>
+        <%= form.select :year, options_for_select((Date.today.year - 20..Date.today.year + 5))%>
+    </div>
+    <div>
+        <%= form.label "sinópse"%>
+        <%= form.text_area :synopsis%>
+    </div>
+    <div>
+        <%= form.label "Pais"%>
+        <%= form.text_field :country%>
+    </div>
+    <div>
+        <%= form.label "Duração em minutos"%>
+        <%= form.number_field :duration%>
+    </div>
+    <div>
+        <%= form.label "rascunho"%>
+        <%= form.check_box :isSketch, {checked: true}%>
+    </div>
+    <div>
+        <%= form.label "Diretor"%>
+        <%= form.collection_select :director_id, Director.order(:name), :id, :name %>
+    </div>
+    <div>
+        <%= form.label "Gênero"%>
+        <%= form.collection_select :genre_id, Genre.order(:name), :id, :name%>
+    </div>
+    <%= form.submit "Criar"%>
+<% end %>

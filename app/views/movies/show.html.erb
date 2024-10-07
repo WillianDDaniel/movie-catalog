@@ -1,0 +1,10 @@
+<%= link_to "voltar", root_path%>
+<h1><%= @movie.title%></h1>
+<p><%= @movie.year%></p>
+<p><%= @movie.country%></p>
+<p><%= @movie.synopsis%></p>
+<p><%= @movie.duration%></p>
+<p><%= link_to @movie.director.name, director_path(@movie.director)%></p>
+<p><%= link_to @movie.genre.name, genre_path(@movie.genre)%></p>
+
+

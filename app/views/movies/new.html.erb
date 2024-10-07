@@ -1,0 +1,59 @@
+<%= stylesheet_link_tag "new-movie", "data-turbo-track": "reload" %>
+
+<section class='new-movie-container'>
+
+	<h2>Cadastrar filme</h2>
+
+	<%= form_with model: @movie do |form| %>
+
+			<div class="movie-title">
+					<%= form.label :title, "Nome do Filme" %>
+					<%= form.text_field :title %>
+			</div>
+
+			<div class="isSketch">
+  			<%= form.label :isSketch, "É Rascunho?" %>
+  			<%= form.check_box :isSketch %>
+			</div>
+
+			<div class="year">
+					<%= form.label :year, "Ano de lançamento" %>
+					<%= form.select :year, options_for_select((1895..Date.today.year)), :prompt => "Selecione..." %>
+			</div>
+
+			<div class="country">
+					<%= form.label :country, "Pais"%>
+					<%= form.text_field :country %>
+			</div>
+
+			<div class="duration">
+					<%= form.label :duration, "Duração em minutos" %>
+					<%= form.number_field :duration %>
+			</div>
+
+			<div class="director">
+					<%= form.label :director_id, "Diretor"%>
+					<%= form.collection_select :director_id, Director.order(:name), :id, :name %>
+			</div>
+
+			<div class="genre">
+					<%= form.label :genre_id, "Gênero"%>
+					<%= form.collection_select :genre_id, Genre.order(:name), :id, :name%>
+			</div>
+
+			<div class="cover-url">
+					<%= form.label :cover_url, "Url da Capa" %>
+					<%= form.text_field :cover_url %>
+			</div>
+
+			<div	class="synopsis">
+					<%= form.label :synopsis, "Sinopse:"%>
+					<%= form.text_area :synopsis, rows: 10, class: "synopsis-text-area" %>
+			</div>
+
+			<div class="submit-container">
+				<%= form.submit "Cadastrar", class: "submit-button" %>
+			</div>
+
+	<% end %>
+</section>

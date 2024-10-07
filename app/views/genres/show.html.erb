@@ -1,0 +1,11 @@
+<%= link_to "voltar", root_path%>
+<h1><%= @genre.name%></h1> 
+
+<div>
+    <%= link_to "editar", edit_genre_path(@genre)%>
+    <%= link_to "deletar", genre_path(@genre), data: {turbo_method: :delete, turbo_confirm: "Are you sure"}%>
+</div>
+
+<% @genre.movies.each do |movie|%>
+    <%= link_to movie.title, movie_path(movie)%>
+<% end %>

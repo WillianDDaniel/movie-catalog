@@ -1,0 +1,20 @@
+<%= link_to "voltar", root_path%>
+<%= form_with model: @director do |form|%>
+    <div>
+        <%= form.label "nome"%>
+        <%= form.text_field :name%>
+    </div>
+    <div>
+        <%= form.label "Nacionalidade"%>
+        <%= form.text_field :nacionality%>
+    </div>
+    <div>
+        <%= form.label "data de nascimento"%>
+        <%= form.date_field :birthdate%>
+    </div>
+    <div>
+        <%= form.label "gênero favorito"%>
+        <%= form.collection_select :favorite_genre_id, Genre.order(:name), :id, :name%>
+    </div>
+    <%= form.submit "Criar"%>
+<% end %>

@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag "home", "data-turbo-track": "reload" %>
+
+<div class='home-container'>
+    <h2 class='home-title'>Bem vindos ao catálogo de filmes online</h2>
+
+    <br>
+
+    <p class='home-description'>O que gostaria de fazer?</p>
+
+    <div class='actions-container'>
+
+        <div class='add-films'>
+            <h3>Filmes</h3>
+            <%= link_to "Adicionar", new_movie_path, class: 'action-btn' %>
+        </div>
+
+        <div class='add-directors'>
+            <h3>Diretores</h3>
+            <%= link_to "Adicionar", new_director_path, class: 'action-btn' %>
+        </div>
+
+        <div class='add-genres'>
+            <h3>Genêros</h3>
+            <%= link_to "Adicionar", new_genre_path, class: 'action-btn' %>
+        </div>
+    </div>
+
+    <p class='bottom-msg'>Ou navegue no menu superior direito para ver os filmes cadastrados.</p>
+</div>
+

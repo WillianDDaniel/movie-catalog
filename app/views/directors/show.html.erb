@@ -1,0 +1,12 @@
+<%= link_to "voltar", root_path%>
+<h1><%= @director.name%></h1>
+<div>
+    <%= link_to "editar", edit_director_path(@director)%>
+    <%= link_to "deletar", director_path(@director), data: {turbo_method: :delete, turbo_confirm: "tem certeza que deseja apagar este diretor?"}%>
+</div>
+<p><%= @director.nacionality%></p>
+<p><%= @director.birthdate%></p>
+<p><%= @director.favorite_genre.name%></p>
+<% @director.movies.each do |movie|%>
+    <%= link_to movie.title, movie_path(movie)%>
+<% end %>
