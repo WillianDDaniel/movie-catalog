@@ -1,20 +1,33 @@
-<%= link_to "voltar", root_path%>
-<%= form_with model: @director do |form|%>
-    <div>
-        <%= form.label "nome"%>
-        <%= form.text_field :name%>
-    </div>
-    <div>
-        <%= form.label "Nacionalidade"%>
-        <%= form.text_field :nacionality%>
-    </div>
-    <div>
-        <%= form.label "data de nascimento"%>
-        <%= form.date_field :birthdate%>
-    </div>
-    <div>
-        <%= form.label "gênero favorito"%>
-        <%= form.collection_select :favorite_genre_id, Genre.order(:name), :id, :name%>
-    </div>
-    <%= form.submit "Editar"%>
-<% end %>
+<%= stylesheet_link_tag "edit-director", "data-turbo-track": "reload" %>
+
+<section class='edit-director-container'>
+    <h2>Editar Diretor</h2>
+
+    <%= link_to "Voltar", directors_path, class: "btn-back" %>
+
+    <%= form_with model: @director do |form| %>
+        <div class="director-name">
+            <%= form.label :name, "Nome" %>
+            <%= form.text_field :name %>
+        </div>
+
+        <div class="director-nationality">
+            <%= form.label :nacionality, "Nacionalidade" %>
+            <%= form.text_field :nacionality %>
+        </div>
+
+        <div class="director-birthdate">
+            <%= form.label :birthdate, "Data de Nascimento" %>
+            <%= form.date_field :birthdate %>
+        </div>
+
+        <div class="director-favorite-genre">
+            <%= form.label :favorite_genre_id, "Gênero Favorito" %>
+            <%= form.collection_select :favorite_genre_id, Genre.order(:name), :id, :name %>
+        </div>
+
+        <div class="submit-container">
+            <%= form.submit "Editar", class: "submit-button" %>
+        </div>
+    <% end %>
+</section>

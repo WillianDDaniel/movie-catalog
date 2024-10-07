@@ -1,0 +1,87 @@
+.edit-director-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.edit-director-container h2 {
+    margin: 20px;
+}
+
+.edit-director-container form {
+    display: flex;
+    width: 60%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(187, 187, 187);
+    padding: 20px 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+    border-radius: 5px;
+}
+
+.edit-director-container form div {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.edit-director-container form label {
+    font-weight: 500;
+    padding-left: 3px;
+}
+
+.edit-director-container form input,
+.edit-director-container form select,
+.edit-director-container form textarea {
+    border-radius: 3px;
+    border: none;
+    padding: 3px 5px;
+    outline: none;
+}
+
+.director-name,
+.director-nationality,
+.director-birthdate,
+.director-favorite-genre {
+    width: 100%;
+}
+
+.submit-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.submit-button {
+    width: 100%;
+    height: 30px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.submit-button:hover {
+    background-color: #0561c4;
+    transform: scale(1.02);
+}
+
+.btn-back {
+    margin-bottom: 20px;
+    padding: 5px 15px;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btn-back:hover {
+    background-color: #0561c4;
+    transform: scale(1.02);
+}
