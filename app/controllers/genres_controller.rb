@@ -1,4 +1,5 @@
 class GenresController < ApplicationController
+
   def index
     @genres = Genre.all
   end
@@ -33,9 +34,13 @@ class GenresController < ApplicationController
   def destroy
     id = params[:id]
     genre = Genre.find(id)
+
     if genre.delete
       redirect_to genres_path
     end
   end
+
+  private
+
 end
 

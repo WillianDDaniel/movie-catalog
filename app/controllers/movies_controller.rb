@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   def index
-    @movies = Movie.all
+    @movies = Movie.where(isSketch: false)
   end
   def show
     @movie = Movie.find(params[:id])
@@ -37,9 +37,4 @@ class MoviesController < ApplicationController
     end
   end
 
-  private
-
-  def movie_params
-    params.require(:movie).permit(:title, :year, :synopsis, :country, :duration, :isSketch, :director_id, :genre_id, :cover_url)
-  end
 end
