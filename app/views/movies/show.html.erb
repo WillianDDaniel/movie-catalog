@@ -1,10 +1,30 @@
-<%= link_to "voltar", root_path%>
-<h1><%= @movie.title%></h1>
-<p><%= @movie.year%></p>
-<p><%= @movie.country%></p>
-<p><%= @movie.synopsis%></p>
-<p><%= @movie.duration%></p>
-<p><%= link_to @movie.director.name, director_path(@movie.director)%></p>
-<p><%= link_to @movie.genre.name, genre_path(@movie.genre)%></p>
+<%= stylesheet_link_tag "movie-show", "data-turbo-track": "reload" %>
 
+<div class='movie-show-container'>
+  <%= link_to "Voltar", movies_path, class: "btn-back" %>
 
+  <div class='single-movie'>
+    <div class='movie-cover'>
+      <% if @movie.cover_url.present? %>
+        <img src="<%= @movie.cover_url %>" alt="Capa de <%= @movie.title %>">
+      <% else %>
+        <img src="/imgs/no-cover.jpg" alt="Sem capa disponível">
+      <% end %>
+    </div>
+
+    <div class='movie-info'>
+      <h1><%= @movie.title %></h1>
+      <p><strong>Ano de Lançamento:</strong> <%= @movie.year %></p>
+      <p><strong>País:</strong> <%= @movie.country %></p>
+      <p><strong>Sinopse:</strong> <%= @movie.synopsis %></p>
+      <p><strong>Duração:</strong> <%= @movie.duration %> minutos</p>
+      <p><strong>Diretor:</strong> <%= link_to @movie.director.name, director_path(@movie.director) %></p>
+      <p><strong>Gênero:</strong> <%= link_to @movie.genre.name, genre_path(@movie.genre) %></p>
+    </div>
+
+    <div class='movie-actions'>
+      <%= link_to "Editar", edit_movie_path(@movie), class: "btn-edit" %>
+      <%= link_to "Excluir", movie_path(@movie), data: {turbo_method: :delete, turbo_confirm: "Confirmar exclusão do filme?"}, class: "btn-delete" %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+.directors-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.directors-container h2 {
+    margin: 20px;
+}
+
+.single-director {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 10px;
+}
+
+.director-actions {
+    display: flex;
+    justify-content: space-between;
+    width: 100px;
+    margin-top: 10px;
+}

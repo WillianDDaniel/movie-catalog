@@ -1,0 +1,26 @@
+<%= stylesheet_link_tag "director", "data-turbo-track": "reload" %>
+
+<div class='directors-container'>
+
+  <h2>Catálogo de Diretores</h2>
+
+  <%= "Nenhum diretor cadastrado" if @directors.empty? %>
+
+  <div>
+    <% @directors.each do |director| %>
+
+      <div class='single-director'>
+
+        <p><%= director.name %> - <%= director.nacionality %></p>
+
+        <div class='director-actions'>
+          <%= link_to "Editar", edit_director_path(director) %>
+          <%= link_to "Excluir", director_path(director), data: {turbo_method: :delete, turbo_confirm: "Confirmar exclusão do diretor?"} %>
+        </div>
+
+      </div>
+
+    <% end %>
+  </div>
+
+</div>

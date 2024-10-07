@@ -1,0 +1,25 @@
+<%= stylesheet_link_tag "genre", "data-turbo-track": "reload" %>
+
+<div class='genres-container'>
+
+  <h2>Catálogo de Gêneros</h2>
+
+  <%= "Nenhum gênero cadastrado" if @genres.empty? %>
+
+  <div>
+    <% @genres.each do |genre| %>
+
+      <div class='single-genre'>
+        <p><%= genre.name %></p>
+
+        <div class='genre-actions'>
+          <%= link_to "Editar", edit_genre_path(genre) %>
+          <%= link_to "Excluir", genre_path(genre), data: {turbo_method: :delete, turbo_confirm: "Confirmar exclusão do gênero?"} %>
+        </div>
+
+      </div>
+
+    <% end %>
+  </div>
+
+</div>

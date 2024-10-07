@@ -1,20 +1,36 @@
-<%= link_to "voltar", root_path%>
-<%= form_with model: @director do |form|%>
-    <div>
-        <%= form.label "nome"%>
-        <%= form.text_field :name%>
+<%= stylesheet_link_tag "new-director", "data-turbo-track": "reload" %>
+
+<section class='new-director-container'>
+
+  <h2>Cadastrar Diretor</h2>
+
+  <%= link_to "Voltar", root_path, class: "back-link" %>
+
+  <%= form_with model: @director do |form| %>
+
+    <div class="director-name">
+      <%= form.label :name, "Nome do Diretor" %>
+      <%= form.text_field :name %>
     </div>
-    <div>
-        <%= form.label "Nacionalidade"%>
-        <%= form.text_field :nacionality%>
+
+    <div class="director-nacionality">
+      <%= form.label :nacionality, "Nacionalidade" %>
+      <%= form.text_field :nacionality %>
     </div>
-    <div>
-        <%= form.label "data de nascimento"%>
-        <%= form.date_field :birthdate%>
+
+    <div class="director-birthdate">
+      <%= form.label :birthdate, "Data de Nascimento" %>
+      <%= form.date_field :birthdate %>
     </div>
-    <div>
-        <%= form.label "gênero favorito"%>
-        <%= form.collection_select :favorite_genre_id, Genre.order(:name), :id, :name%>
+
+    <div class="director-favorite-genre">
+      <%= form.label :favorite_genre_id, "Gênero Favorito" %>
+      <%= form.collection_select :favorite_genre_id, Genre.order(:name), :id, :name %>
     </div>
-    <%= form.submit "Criar"%>
-<% end %>
+
+    <div class="submit-container">
+      <%= form.submit "Criar", class: "submit-button" %>
+    </div>
+
+  <% end %>
+</section>

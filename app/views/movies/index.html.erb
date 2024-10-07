@@ -6,16 +6,33 @@
 
   <%= "Nenhum filme cadastrado" if @movies.empty? %>
 
-  <div>
-    <% @movies.each do |movie|%>
+  <div class='movies-list'>
+    <% @movies.each do |movie| %>
 
       <div class='single-movie'>
 
-        <p><%= movie.title %></p>
+        <% if movie.cover_url.present? %>
+          <div class='movie-cover'>
+            <img src="<%= movie.cover_url %>" alt="Capa de <%= movie.title %>">
+          </div>
+        <% end %>
+  
+        <% unless movie.cover_url.present? %>
+          <div class='movie-cover'>
+            <img src="/imgs/no-cover.jpg" alt="Sem capa disponivel">
+          </div>
+        <% end %>
 
-        <div class='movie-actions'>
-          <%= link_to "Editar", edit_movie_path(movie) %>
-          <%= link_to "Excluir", movie_path(movie), data: {turbo_method: :delete, turbo_confirm: "Confirmar exclusão do filme?"} %>
+        <div class='movie-info'>
+          <h3><%= movie.title %></h3>
+
+          <%= link_to "Ver Mais", movie_path(movie), class: "btn-show-more" %>
+
+          <div class='movie-actions'>
+            <%= link_to "Editar", edit_movie_path(movie), class: "btn-edit" %>
+            <%= link_to "Excluir", movie_path(movie), data: {turbo_method: :delete, turbo_confirm: "Confirmar exclusão do filme?"}, class: "btn-delete" %>
+          </div>
+
         </div>
 
       </div>

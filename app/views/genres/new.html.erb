@@ -1,7 +1,21 @@
-<%= form_with model: @genre do |form|%>
-    <div>
-        <%= form.label :name%>
-        <%= form.text_field :name%>
+<%= stylesheet_link_tag "new-genre", "data-turbo-track": "reload" %>
+
+<section class='new-genre-container'>
+
+  <h2>Cadastrar Gênero</h2>
+
+  <%= link_to "Voltar", root_path, class: "back-link" %>
+
+  <%= form_with model: @genre do |form| %>
+
+    <div class="genre-name">
+      <%= form.label :name, "Nome do Gênero" %>
+      <%= form.text_field :name %>
     </div>
-    <%= form.submit "Criar"%>
-<% end %>
+
+    <div class="submit-container">
+      <%= form.submit "Criar", class: "submit-button" %>
+    </div>
+
+  <% end %>
+</section>

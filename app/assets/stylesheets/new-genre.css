@@ -1,0 +1,61 @@
+.new-genre-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.new-genre-container h2 {
+    margin: 20px;
+}
+
+.new-genre-container form {
+    display: flex;
+    width: 60%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(187, 187, 187);
+    padding: 20px 0px;
+    flex-wrap: wrap;
+    gap: 15px;
+    border-radius: 5px;
+}
+
+.new-genre-container form div {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.new-genre-container form label {
+    font-weight: 500;
+    padding-left: 3px;
+}
+
+.new-genre-container form input {
+    border-radius: 3px;
+    border: none;
+    padding: 3px 5px;
+    outline: none;
+}
+
+.genre-name {
+    width: 45%;
+}
+
+.submit-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.submit-button {
+    width: 90%;
+    height: 30px;
+}
+
+.back-link {
+    margin-bottom: 15px;
+}

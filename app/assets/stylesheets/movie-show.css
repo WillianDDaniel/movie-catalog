@@ -1,37 +1,26 @@
-.movies-container {
+.movie-show-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
+    padding: 20px;
 }
 
-.movies-container h2 {
-    margin: 20px;
-}
-
-.movies-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    width: 100%;
+.movie-show-container h1 {
+    margin: 20px 0;
+    text-align: center;
 }
 
 .single-movie {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 200px;
-    padding: 15px;
+    width: 300px;
+    padding: 20px;
     border: 1px solid #333;
     border-radius: 5px;
     background-color: #f9f9f9;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
-}
-
-.single-movie:hover {
-    border: 1px solid #007bff;
 }
 
 .movie-cover img {
@@ -44,28 +33,40 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    margin-top: 15px;
 }
 
-.movie-info h3 {
-    margin: 0px 0px 15px 0px;
-    font-size: 1.1rem;
-    text-align: center;
+.movie-info p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+.btn-back {
+    margin-bottom: 20px;
+    padding: 5px 15px;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btn-back:hover {
+    background-color: #0561c4;
+    transform: scale(1.02);
 }
 
 .movie-actions {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    margin-top: 10px;
-    gap: 10px;
+    margin-top: 20px;
 }
 
-.btn-show-more,
 .btn-edit,
 .btn-delete {
     padding: 5px 10px;
-    text-align: center;
     border-radius: 5px;
     text-decoration: none;
     font-size: 14px;
@@ -74,21 +75,9 @@
     font-weight: 600;
 }
 
-.btn-show-more {
-    background-color: #007bff;
-    width: 100%;
-    margin-top: 10px;
-}
-
-.btn-show-more:hover {
-    background-color: #0561c4;
-    transform: scale(1.02);
-}
-
 .btn-edit {
     background-color: #c79600;
     width: 45%;
-    flex: 1;
 }
 
 .btn-edit:hover {
@@ -99,7 +88,6 @@
 .btn-delete {
     background-color: #dc3545;
     width: 45%;
-    flex: 1;
 }
 
 .btn-delete:hover {
