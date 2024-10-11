@@ -24,7 +24,7 @@
 
         <div class="year">
             <%= form.label :year, "Ano de Lançamento" %>
-            <%= form.select :year, options_for_select((1895..Date.today.year)), prompt: "Selecione..." %>
+            <%= form.select :year, options_for_select((1895..(Date.today.year + 10))), prompt: "Selecione..." %>
         </div>
 
         <div class="country">

@@ -13,7 +13,7 @@ class DirectorsController < ApplicationController
     if @director.save
       redirect_to @director
     else
-      render :new, status: :unprocessable_entity 
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -21,8 +21,11 @@ class DirectorsController < ApplicationController
     @director = Director.find(params[:id])
     if @director.delete
       redirect_to directors_path
+    else
+      render :new, status: :unprocessable_entity
     end
   end
+
   def show
     @director = Director.find(params[:id])
   end
@@ -40,8 +43,7 @@ class DirectorsController < ApplicationController
     end
   end
 
-  private 
-
+  private
   def director_params
     params.require(:director).permit(:name, :nacionality, :birthdate, :favorite_genre_id)
   end
