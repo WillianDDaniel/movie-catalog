@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
   <head>
     <title>FilmClub</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -7,16 +7,13 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "header", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
     <header class="nav-header">
       <h1>
-        <a href='/'>
-          FilmsClub
-        </a>
+        <%= link_to "FilmClub", root_path%>
       </h1>
 
       <nav>

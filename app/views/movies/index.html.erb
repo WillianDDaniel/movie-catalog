@@ -1,5 +1,3 @@
-<%= stylesheet_link_tag "movie", "data-turbo-track": "reload" %>
-
 <div class='movies-container'>
 
   <h2>Catálogo de Filmes</h2>
@@ -16,7 +14,7 @@
             <img src="<%= movie.cover_url %>" alt="Capa de <%= movie.title %>">
           </div>
         <% end %>
-  
+
         <% unless movie.cover_url.present? %>
           <div class='movie-cover'>
             <img src="/imgs/no-cover.jpg" alt="Sem capa disponivel">
