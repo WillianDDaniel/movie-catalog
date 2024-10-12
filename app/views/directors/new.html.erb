@@ -1,39 +1,31 @@
-<section class='new-director-container'>
+<section class='section-container align-center '>
 
-  <h2>Cadastrar novo Diretor</h2>
+  <h2 class='section-title'>Cadastrar novo Diretor</h2>
 
-  <%= link_to root_path, class: "back-link" do %>
-    <div class='back'>
-      <img src="/imgs/blue-back-arrow.png" alt="Voltar">
-      Voltar
-    </div>
-  <% end %>
+  <%= form_with model: Director.new , html: { class: "form" } do |f| %>
 
-
-  <%= form_with model: @director do |form| %>
-
-    <div class="director-name">
-      <%= form.label :name, "Nome do Diretor" %>
-      <%= form.text_field :name %>
+    <div class="name">
+      <%= f.label :name, "Nome do Diretor:" %>
+      <%= f.text_field :name %>
     </div>
 
-    <div class="director-nacionality">
-      <%= form.label :nacionality, "Nacionalidade" %>
-      <%= form.text_field :nacionality %>
+    <div class="country">
+      <%= f.label :nacionality, "Nacionalidade:" %>
+      <%= f.text_field :nacionality %>
     </div>
 
-    <div class="director-birthdate">
-      <%= form.label :birthdate, "Data de Nascimento" %>
-      <%= form.date_field :birthdate %>
+    <div class="date">
+      <%= f.label :birthdate, "Data de Nascimento:" %>
+      <%= f.date_field :birthdate %>
     </div>
 
-    <div class="director-favorite-genre">
-      <%= form.label :favorite_genre_id, "Gênero Favorito" %>
-      <%= form.collection_select :favorite_genre_id, Genre.order(:name), :id, :name %>
+    <div class="genre">
+      <%= f.label :favorite_genre_id, "Gênero Favorito:" %>
+      <%= f.select :favorite_genre_id, @genres.map { |g| [g.name, g.id] }, :prompt => "Selecione" %>
     </div>
 
-    <div class="submit-container">
-      <%= form.submit "Criar", class: "submit-button" %>
+    <div class="submit">
+      <%= f.submit "Criar", class: "submit-button" %>
     </div>
 
   <% end %>

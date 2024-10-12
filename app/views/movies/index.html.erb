@@ -1,41 +1,19 @@
-<div class='movies-container'>
+<section class='section-container'>
 
-  <h2>Catálogo de Filmes</h2>
-
-  <%= "Nenhum filme cadastrado" if @movies.empty? %>
-
-  <div class='movies-list'>
-    <% @movies.each do |movie| %>
-
-      <div class='single-movie'>
-
-        <% if movie.cover_url.present? %>
-          <div class='movie-cover'>
-            <img src="<%= movie.cover_url %>" alt="Capa de <%= movie.title %>">
-          </div>
-        <% end %>
-
-        <% unless movie.cover_url.present? %>
-          <div class='movie-cover'>
-            <img src="/imgs/no-cover.jpg" alt="Sem capa disponivel">
-          </div>
-        <% end %>
-
-        <div class='movie-info'>
-          <h3><%= movie.title %></h3>
-
-          <%= link_to "Ver Mais", movie_path(movie), class: "btn-show-more" %>
-
-          <div class='movie-actions'>
-            <%= link_to "Editar", edit_movie_path(movie), class: "btn-edit" %>
-            <%= link_to "Excluir", movie_path(movie), data: {turbo_method: :delete, turbo_confirm: "Confirmar exclusão do filme?"}, class: "btn-delete" %>
-          </div>
-
-        </div>
-
-      </div>
-
-    <% end %>
+  <div class='section-header'>
+    <h2>Catálogo de Filmes</h2>
+    <%= link_to "Adicionar filme", new_movie_path %>
   </div>
 
-</div>
+  <% if @movies.empty? %>
+    <div class="no-content">
+      <p class='no-content-message'>Nenhum filme cadastrado.</p>
+
+      <br>
+
+      <p class='be-the-first'>Seja o primeiro a cadastrar um filme no sistema.</p>
+      <%= link_to "Adicionar um novo filme", new_movie_path %>
+    </div>
+  <% end %>
+
+</section>

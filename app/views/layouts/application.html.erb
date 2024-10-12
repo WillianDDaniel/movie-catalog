@@ -7,13 +7,15 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= favicon_link_tag 'favicon.ico' %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
     <header class="nav-header">
       <h1>
-        <%= link_to "FilmClub", root_path%>
+        <%= link_to "FilmClub.", root_path%>
+        <span> Seu Catálogo de Filmes</span>
       </h1>
 
       <nav>

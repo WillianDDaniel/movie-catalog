@@ -1,28 +1,34 @@
-<div class='home-container'>
-    <h2 class='home-title'>Bem vindos ao catálogo de filmes online</h2>
+<section class='home-container'>
+  <h2 class='home-title'>Bem vindos ao FilmClub!</h2>
+  <p>Seu catálogo de filmes na web</p>
 
-    <br>
+  <div class='actions-container'>
 
-    <p class='home-description'>O que gostaria de fazer?</p>
-
-    <div class='actions-container'>
-
-        <div class='add-films'>
-            <h3>Filmes</h3>
-            <%= link_to "Adicionar", new_movie_path, class: 'action-btn' %>
+    <%= link_to movies_path, title: "Catálogo de Filmes" do %>
+      <div class='see-movies-card'>
+        <div>
+          <h3>Catálogo de Filmes</h3>
+          <img src="/imgs/see-movies.webp">
         </div>
 
-        <div class='add-directors'>
-            <h3>Diretores</h3>
-            <%= link_to "Adicionar", new_director_path, class: 'action-btn' %>
+        Ver Catálogo
+      </div>
+    <% end %>
+
+    <%= link_to new_movie_path, title: "Adicionar novo filme" do %>
+      <div class='add-movie-card'>
+        <div>
+          <h3>Novo Filme</h3>
+          <img src="/imgs/add-movie.webp">
         </div>
 
-        <div class='add-genres'>
-            <h3>Genêros</h3>
-            <%= link_to "Adicionar", new_genre_path, class: 'action-btn' %>
-        </div>
-    </div>
+        Adicionar Filme
+      </div>
+    <% end %>
+  </div>
 
-    <p class='bottom-msg'>Ou navegue no menu superior direito para ver os filmes cadastrados.</p>
-</div>
+  </section>
+
+
+
 

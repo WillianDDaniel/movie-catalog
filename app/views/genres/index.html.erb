@@ -1,27 +1,44 @@
-<div class='genres-container'>
+<section class='section-container'>
 
-  <h2>Catálogo de Gêneros</h2>
+  <div class='section-header'>
+    <h2>Catálogo de Gêneros</h2>
+    <%= link_to "Adicionar gênero", new_genre_path %>
+  </div>
 
-  <%= "Nenhum gênero cadastrado" if @genres.empty? %>
+  <% if @genres.empty? %>
+    <div class="no-content">
+      <p class='no-content-message'>Nenhum gênero cadastrado.</p>
 
-  <div class='genres-list'>
-    <% @genres.each do |genre| %>
+      <br>
 
-      <div class='single-genre'>
-        <div class='genre-info'>
-          <p><%= genre.name %></p>
+      <p class='be-the-first'>Seja o primeiro a cadastrar um gênero no sistema.</p>
+      <%= link_to "Adicionar um novo gênero", new_genre_path %>
+    </div>
+  <% end %>
 
-          <%= link_to "Ver Mais", genre_path(genre), class: "btn-show-more" %>
+  <% if @genres.any? %>
+    <div class='index-container'>
 
-          <div class='genre-actions'>
+      <% @genres.each do |genre| %>
+        <div class='index-card'>
+
+          <h3><%= genre.name %></h3>
+
+          <div class='index-actions'>
+            <%= link_to "Ver detalhes", genre_path(genre), class: "btn-details" %>
             <%= link_to "Editar", edit_genre_path(genre), class: "btn-edit" %>
-            <%= link_to "Excluir", genre_path(genre), data: {turbo_method: :delete, turbo_confirm: "Confirmar exclusão do gênero?"}, class: "btn-delete" %>
+
+            <%= link_to "Excluir", genre_path(genre), class: "btn-delete",
+              data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja excluir este gênero?" }
+            %>
+
           </div>
 
         </div>
-      </div>
+      <% end %>
 
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 
-</div>
+
+</section>

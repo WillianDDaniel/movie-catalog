@@ -1,22 +1,15 @@
-<section class='new-genre-container'>
+<section class='section-container align-center'>
 
-  <h2>Cadastrar novo Gênero</h2>
+  <h2 class='section-title'>Cadastrar novo Gênero</h2>
 
-  <%= link_to root_path, class: "back-link" do %>
-    <div class='back'>
-      <img src="/imgs/blue-back-arrow.png" alt="Voltar">
-      Voltar
-    </div>
-  <% end %>
+  <%= form_with model: Genre.new, html: { class: "form" } do |form| %>
 
-  <%= form_with model: @genre do |form| %>
-
-    <div class="genre-name">
-      <%= form.label :name, "Nome do Gênero" %>
+    <div class="name">
+      <%= form.label :name, "Nome do Gênero:" %>
       <%= form.text_field :name %>
     </div>
 
-    <div class="submit-container">
+    <div class="submit">
       <%= form.submit "Criar", class: "submit-button" %>
     </div>
 

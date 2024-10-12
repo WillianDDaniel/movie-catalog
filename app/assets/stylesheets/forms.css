@@ -1,0 +1,64 @@
+.align-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 15px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 3px;
+    width: 80%;
+}
+
+.form div {
+    display: flex;
+    flex-direction: column;
+}
+
+.form input, .form textarea, .form select {
+    outline: none;
+    padding: 1.5px 5px;
+}
+
+.form .name {
+    width: 40%;
+}
+
+.form .country {
+    width: 25%;
+}
+
+.form .duration {
+    width: 20%;
+}
+
+.form .year,
+.form .genre,
+.form .director,
+.form .date {
+    width: 18%;
+}
+
+.form .cover-url {
+    width: 29%;
+}
+
+.form .is-sketch {
+    flex-direction: row;
+    gap: 7px;
+    align-items: center;
+    width: 90%;
+}
+
+.form .synopsis {
+    width: 90%;
+}
+
+.form .submit {
+    width: 90%;
+}

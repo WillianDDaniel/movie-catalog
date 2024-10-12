@@ -1,12 +1,114 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', 'sans-serif';
+    font-family: "Poppins", sans-serif;
 }
 
 body {
     background-size: cover;
+    background-image: url(/imgs/background-filmclub.webp);
+    color: #fff;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.section-container {
+    width: 90%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 1.7rem;
+    margin-bottom: 20px;
+}
+
+.section-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+}
+
+.section-header h2 {
+    font-size: 1.7rem;
+}
+
+.no-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 35px;
+    border-radius: 5px;
+    margin-top: 35px;
+}
+
+.no-content-message {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.be-the-first, .done-it-first {
+    font-weight: 500;
+    font-size: 1rem;
+    font-style: italic;
+    margin-bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.45);
+    padding: 2px 20px;
+    border-radius: 5px;
+}
+
+.done-it-first {
+    margin-top: 20px;
+}
+
+.no-content a,
+.section-header a,
+.submit-button {
+    text-decoration: none;
+    background-color: rgb(1, 118, 253);
+    color: #fff;
+    padding: 7px 15px;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.no-content a, .submit-button {
+    box-shadow: 2px 2px 7px 1px rgba(121, 121, 121, 0.25);
+}
+
+.section-header a {
+    box-shadow: 1px 1px 5px 1px rgba(121, 121, 121, 0.2);
+}
+
+.no-content a:hover,
+.section-header a:hover,
+.submit-button:hover {
+    background-color: rgb(1, 118, 253, 0.9);
+    transform: scale(1.01);
+}
+
+.submit-button {
+    outline: none;
+    height: 30px;
+    border: none;
+    width: 100%;
+}
+
+.no-content-buttons {
+    margin-top: 10px;
+    display: flex;
+    gap: 35px;
 }
