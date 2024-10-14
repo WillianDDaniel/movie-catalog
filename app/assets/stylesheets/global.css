@@ -8,8 +8,8 @@
 }
 
 body {
+    background-image: url(/imgs/2.jpg);
     background-size: cover;
-    background-image: url(/imgs/background-filmclub.webp);
     color: #fff;
 }
 
@@ -27,7 +27,7 @@ main {
 .section-title {
     text-align: center;
     font-size: 1.7rem;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .section-header {
@@ -39,6 +39,7 @@ main {
     padding: 10px 15px;
     background-color: rgba(0, 0, 0, 0.7);
     border-radius: 5px;
+    border: 1px solid #282828;
 }
 
 .section-header h2 {
@@ -74,30 +75,31 @@ main {
     margin-top: 20px;
 }
 
-.no-content a,
-.section-header a,
-.submit-button {
+.main-button {
+    outline: none;
+    border: none;
     text-decoration: none;
-    background-color: rgb(1, 118, 253);
+    background-color: rgb(17, 124, 160);
     color: #fff;
     padding: 7px 15px;
     border-radius: 5px;
     font-weight: 500;
 }
 
-.no-content a, .submit-button {
-    box-shadow: 2px 2px 7px 1px rgba(121, 121, 121, 0.25);
+.main-button:hover {
+    background-color: rgb(4, 142, 188);
 }
 
-.section-header a {
+.main-button:active {
+    transform: scale(1.02);
+}
+
+.main-button {
     box-shadow: 1px 1px 5px 1px rgba(121, 121, 121, 0.2);
 }
 
-.no-content a:hover,
-.section-header a:hover,
-.submit-button:hover {
-    background-color: rgb(1, 118, 253, 0.9);
-    transform: scale(1.01);
+.no-content .main-button {
+    box-shadow: 2px 2px 7px 1px rgba(121, 121, 121, 0.25);
 }
 
 .submit-button {
@@ -107,8 +109,27 @@ main {
     width: 100%;
 }
 
+.text-normal {
+    font-size: 1.2rem;
+    font-size: 1rem;
+    padding: 5px 10px;
+}
+
+.text-small {
+    font-size: 1rem;
+    padding: 5px 10px;
+}
+
 .no-content-buttons {
-    margin-top: 10px;
     display: flex;
-    gap: 35px;
+    gap: 0 20px;
+}
+
+.error p {
+    color: rgb(221, 77, 77);
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    padding: 2px 10px;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.4);
 }

@@ -2,7 +2,7 @@
 
   <div class='section-header'>
     <h2>Catálogo de Diretores</h2>
-    <%= link_to "Adicionar diretor", new_director_path %>
+    <%= link_to "Adicionar diretor", new_director_path, class: "main-button" %>
   </div>
 
   <% if @directors.empty? %>
@@ -12,8 +12,25 @@
       <br>
 
       <p class='be-the-first'>Seja o primeiro a cadastrar um diretor no sistema.</p>
-      <%= link_to "Adicionar um novo diretor", new_director_path %>
+      <%= link_to "Adicionar um novo diretor", new_director_path, class: "main-button" %>
     </div>
+  <% end %>
+
+  <% if @directors.any? %>
+    <div class='index-container'>
+
+      <% @directors.each do |director| %>
+        <div class='index-card'>
+          <h3><%= director.name %></h3>
+
+          <div class='index-actions'>
+            <%= link_to "Ver detalhes", director_path(director), class: "btn-details" %>
+            <%= link_to "Editar", edit_director_path(director), class: "btn-edit" %>
+            <%= link_to "Excluir", director_path(director), class: "btn-delete", data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja excluir este diretor?" } %>
+          </div>
+
+        </div>
+      <% end %>
   <% end %>
 
 </section>

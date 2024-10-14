@@ -1,25 +1,39 @@
-<div class='director-show-container'>
+<section class='section-container align-center'>
 
-  <%= link_to "Voltar", directors_path, class: "btn-back" %>
+  <h2 class='section-title'>Diretor <%= @director.name %></h2>
 
-  <div class='single-director'>
+  <div class='director-details'>
+
     <div class='director-info'>
-      <h2><%= @director.name %></h2>
+
+      <h3 class='director-title'>Informações sobre o Diretor</h3>
+
       <p><strong>Nacionalidade:</strong> <%= @director.nacionality %></p>
-      <p><strong>Data de Nascimento:</strong> <%= @director.birthdate.strftime("%d/%m/%Y") %></p>
-      <p><strong>Gênero Favorito:</strong> <%= @director.favorite_genre.name if @director.favorite_genre %></p>
+      <p><strong>Data de Nascimento:</strong> <%= @director.birthdate %></p>
+      <p><strong>Gênero Favorito:</strong> <%= link_to @director.favorite_genre.name, @director.favorite_genre %></p>
+
     </div>
 
-    <div class='director-actions'>
-      <%= link_to "Editar", edit_director_path(@director), class: "btn-edit" %>
-      <%= link_to "Excluir", director_path(@director), data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja apagar este diretor?" }, class: "btn-delete" %>
+    <div class='director-movies'>
+
+      <h3 class='director-title'>Filmes do Diretor</h3>
+
+      <% if @director.movies.empty? %>
+        <p>Nenhum filme cadastrado para este diretor.</p>
+      <% end %>
+
+      <% @director.movies.each do |movie| %>
+        <%= link_to movie_path(movie), class: "movie-link", title: "Ver detalhes de #{movie.title}" do %>
+          <div class='movie-card'>
+            <%= movie.title %>
+            <img src="<%= movie.cover_url %>" alt="Capa de <%= movie.title %>"/>
+            <%= "Ver detalhes" %>
+          </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
 
-  <h3>Filmes do Diretor</h3>
-  <div class='director-movies'>
-    <% @director.movies.each do |movie| %>
-      <p><%= link_to movie.title, movie_path(movie) %></p>
-    <% end %>
-  </div>
 </div>
+
+</section>

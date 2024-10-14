@@ -1,0 +1,17 @@
+.genre-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.genre-title {
+    text-align: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.no-movies {
+    margin-bottom: 20px;
+}

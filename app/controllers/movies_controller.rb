@@ -19,6 +19,11 @@ class MoviesController < ApplicationController
     if @movie.save
       redirect_to @movie
     else
+      @movie.valid?
+      @errors = @movie.errors.messages
+
+      flash.now[:errors] = @errors
+
       render :new, status: :unprocessable_entity
     end
   end
@@ -29,8 +34,17 @@ class MoviesController < ApplicationController
 
   def update
     @movie = Movie.find(params[:id])
+
+    puts @movie.valid?
+
+    @errors = @movie.errors.messages
+
+    puts @errors
+
     if @movie.update(movie_params)
-      redirect_to @movie
+      redirect_to movie_path(@movie)
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 

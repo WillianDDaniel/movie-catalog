@@ -4,7 +4,6 @@ class DirectorsController < ApplicationController
   end
   def new
     @director = Director.new
-    @genres = Genre.all
   end
 
   def create
@@ -13,6 +12,11 @@ class DirectorsController < ApplicationController
     if @director.save
       redirect_to @director
     else
+      @director.valid?
+      @errors = @director.errors.messages
+
+      flash.now[:errors] = @errors
+
       render :new, status: :unprocessable_entity
     end
   end

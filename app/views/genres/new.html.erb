@@ -2,7 +2,15 @@
 
   <h2 class='section-title'>Cadastrar novo Gênero</h2>
 
-  <%= form_with model: Genre.new, html: { class: "form" } do |form| %>
+  <div class="error">
+    <% if flash[:errors] %>
+      <p>
+        <%= format_error_messages(flash[:errors]) %>
+      </p>
+    <% end %>
+  </div>
+
+  <%= form_with model: Genre.new, html: { class: "form genre-form" } do |form| %>
 
     <div class="name">
       <%= form.label :name, "Nome do Gênero:" %>
@@ -10,7 +18,7 @@
     </div>
 
     <div class="submit">
-      <%= form.submit "Criar", class: "submit-button" %>
+      <%= form.submit "Cadastrar", class: "submit-button main-button" %>
     </div>
 
   <% end %>

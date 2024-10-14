@@ -13,8 +13,14 @@ class GenresController < ApplicationController
 
   def create
     @genre = Genre.new(name: params[:genre][:name])
+
     if @genre.save
       redirect_to root_path
+    else
+      @genre.valid?
+      flash.now[:errors] = @genre.errors.messages
+
+      render :new, status: :unprocessable_entity
     end
   end
 

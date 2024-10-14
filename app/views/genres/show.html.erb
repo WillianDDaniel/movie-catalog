@@ -1,25 +1,32 @@
-<div class='genre-show-container'>
-  <%= link_to "Voltar", genres_path, class: "btn-back" %>
+<section class='section-container align-center'>
 
-  <div class='single-genre'>
-    <div class='genre-info'>
-      <h1><%= @genre.name %></h1>
-    </div>
+  <h2 class='section-title'>Gênero <%= @genre.name %></h2>
 
-    <div class='genre-actions'>
-      <%= link_to "Editar", edit_genre_path(@genre), class: "btn-edit" %>
-      <%= link_to "Excluir", genre_path(@genre), data: {turbo_method: :delete, turbo_confirm: "Tem certeza que deseja excluir este gênero?"}, class: "btn-delete" %>
-    </div>
+  <div class='genre-container'>
+    <h3 class='genre-title'>Filmes do Gênero</h3>
 
-    <div class='genre-movies'>
-      <h3>Filmes deste Gênero</h3>
-      <% if @genre.movies.any? %>
-        <% @genre.movies.each do |movie| %>
-          <%= link_to movie.title, movie_path(movie), class: "movie-link" %>
-        <% end %>
-      <% else %>
-        <p>Nenhum filme cadastrado para este gênero.</p>
+    <% if @genre.movies.empty? %>
+
+      <div class='no-content'>
+        <p class='no-movies'>Nenhum filme cadastrado para este gênero.</p>
+
+        <p class='be-the-first'>Seja o primeiro a cadastrar um filme deste gênero no sistema.</p>
+
+        <%= link_to "Adicionar um novo filme", new_movie_path %>
+      </div>
+
+    <% end %>
+
+    <% @genre.movies.each do |movie| %>
+      <%= link_to movie_path(movie), class: "movie-link" , title: "Ver detalhes de #{movie.title}" do %>
+        <div class='movie-card'>
+          <%= movie.title %>
+          <img src="<%= movie.cover_url %>" alt="Capa de <%= movie.title %>"/>
+          <%= "Ver detalhes" %>
+        </div>
       <% end %>
-    </div>
+    <% end %>
+
   </div>
-</div>
+
+</section>

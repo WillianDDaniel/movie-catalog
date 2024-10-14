@@ -1,61 +1,56 @@
-<section class='edit-movie-container'>
-    <h2>Editar Filme</h2>
+<section class='section-container align-center'>
+    <h2 class='section-title'>Editar Filme</h2>
 
-    <%= link_to movies_path, class: "back-link" do %>
-      <div class='back'>
-        <img src="/imgs/blue-back-arrow.png" alt="Voltar">
-        Voltar
+    <%= form_with model: @movie, html: { class: "form" } do |f| %>
+
+      <div class="name">
+        <%= f.label :title, "Nome do Filme:" %>
+        <%= f.text_field :title, placeholder: "Digite o nome do Filme" %>
       </div>
-    <% end %>
 
-    <%= form_with model: @movie do |form| %>
-        <div class="movie-title">
-            <%= form.label :title, "Nome do Filme" %>
-            <%= form.text_field :title %>
-        </div>
+      <div class="country">
+        <%= f.label :country, "País:" %>
+        <%= f.text_field :country, placeholder: "Digite o país de origem" %>
+      </div>
 
-        <div class="isSketch">
-            <%= form.label :isSketch, "É Rascunho?" %>
-            <%= form.check_box :isSketch %>
-        </div>
+      <div class="duration">
+        <%= f.label :duration, "Duração (min):" %>
+        <%= f.number_field :duration %>
+      </div>
 
-        <div class="year">
-            <%= form.label :year, "Ano de Lançamento" %>
-            <%= form.select :year, options_for_select((1895..(Date.today.year + 10))), prompt: "Selecione..." %>
-        </div>
+      <div class="director">
+        <%= f.label :director_id , "Diretor:" %>
+        <%= f.select :director_id , Director.all.map { |d| [d.name, d.id] }, :prompt => "Selecione" %>
+      </div>
 
-        <div class="country">
-            <%= form.label :country, "País" %>
-            <%= form.text_field :country %>
-        </div>
+      <div class="genre">
+        <%= f.label :genre_id, "Gênero:" %>
+        <%= f.select :genre_id, Genre.all.map { |g| [g.name, g.id] }, :prompt => "Selecione" %>
+      </div>
 
-        <div class="duration">
-            <%= form.label :duration, "Duração em Minutos" %>
-            <%= form.number_field :duration %>
-        </div>
+      <div class="year">
+        <%= f.label :year, "Ano de Lançamento:" %>
+        <%= f.date_field :year %>
+      </div>
 
-        <div class="director">
-            <%= form.label :director_id, "Diretor" %>
-            <%= form.collection_select :director_id, Director.order(:name), :id, :name %>
-        </div>
+      <div class="cover-url">
+        <%= f.label :cover_url, "Url da Capa:" %>
+        <%= f.text_field :cover_url, placeholder: "Digite a URL da Capa" %>
+      </div>
 
-        <div class="genre">
-            <%= form.label :genre_id, "Gênero" %>
-            <%= form.collection_select :genre_id, Genre.order(:name), :id, :name %>
-        </div>
+      <div class="is-sketch">
+        <%= f.check_box :isSketch %>
+        <%= f.label :isSketch, "Salvar como Rascunho" %>
+      </div>
 
-        <div class="cover-url">
-            <%= form.label :cover_url, "URL da Capa" %>
-            <%= form.text_field :cover_url %>
-        </div>
+      <div class="synopsis">
+        <%= f.label :synopsis, "Sinopse:" %>
+        <%= f.text_area :synopsis, rows: 4 %>
+      </div>
 
-        <div class="synopsis">
-            <%= form.label :synopsis, "Sinopse:" %>
-            <%= form.text_area :synopsis, rows: 10, class: "synopsis-text-area" %>
-        </div>
+      <div class="submit">
+        <%= f.submit "Salvar", class: "submit-button main-button" %>
+      </div>
 
-        <div class="submit-container">
-            <%= form.submit "Atualizar", class: "submit-button" %>
-        </div>
     <% end %>
 </section>

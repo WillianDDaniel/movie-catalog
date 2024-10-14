@@ -1,10 +1,18 @@
 <section class='section-container align-center'>
 	<h2 class='section-title'>Cadastrar novo Filme</h2>
 
-  <% if @genres.empty? || @directors.empty? %>
+  <div class="error">
+    <% if flash[:errors] %>
+      <p>
+        <%= format_error_messages(flash[:errors]) %>
+      </p>
+    <% end %>
+  </div>
 
-    <% both_empty = @genres.empty? && @directors.empty? %>
-    <% message = @genres.empty? ? "Nenhum gênero encontrado." : "Nenhum diretor encontrado." %>
+  <% if Genre.all.empty? || Director.all.empty? %>
+
+    <% both_empty = Genre.all.empty? && Director.all.empty? %>
+    <% message = Genre.all.empty? ? "Nenhum gênero encontrado." : "Nenhum diretor encontrado." %>
     <% message = "Nenhum gênero ou diretor encontrado." if both_empty %>
 
     <div class="no-content">
@@ -12,15 +20,15 @@
       <p class='done-it-first'>Para cadastrar um filme, primeiro cadastre pelo menos um gênero e um diretor.</p>
 
       <div class='no-content-buttons'>
-        <%= link_to "Cadastrar gênero", new_genre_path if @genres.empty? %>
-        <%= link_to "Cadastrar diretor", new_director_path if @directors.empty? %>
+        <%= link_to "Cadastrar gênero", new_genre_path, class: "main-button" if Genre.all.empty? %>
+        <%= link_to "Cadastrar diretor", new_director_path, class: "main-button" if Genre.all.empty? %>
       </div>
 
     </div>
 
   <% end %>
 
-  <% if @genres.any? && @directors.any? %>
+  <% if Genre.all.any? && Director.all.any? %>
 
     <%= form_with model: Movie.new, html: { class: "form" } do |f| %>
 
@@ -31,7 +39,7 @@
 
       <div class="country">
         <%= f.label :country, "País:" %>
-        <%= f.text_field :country, placeholder: "Digite o país de origem" %>
+        <%= f.select :country, countries_for_select, prompt: "Selecione um país" %>
       </div>
 
       <div class="duration">
@@ -41,12 +49,12 @@
 
       <div class="director">
         <%= f.label :director_id , "Diretor:" %>
-        <%= f.select :director_id , @directors.map { |d| [d.name, d.id] }, :prompt => "Selecione" %>
+        <%= f.select :director_id , Director.all.map { |d| [d.name, d.id] }, :prompt => "Selecione" %>
       </div>
 
       <div class="genre">
         <%= f.label :genre_id, "Gênero:" %>
-        <%= f.select :genre_id, @genres.map { |g| [g.name, g.id] }, :prompt => "Selecione" %>
+        <%= f.select :genre_id, Genre.all.map { |g| [g.name, g.id] }, :prompt => "Selecione" %>
       </div>
 
       <div class="year">
@@ -70,7 +78,7 @@
       </div>
 
       <div class="submit">
-        <%= f.submit "Cadastrar", class: "submit-button" %>
+        <%= f.submit "Cadastrar", class: "submit-button main-button" %>
       </div>
 
     <% end %>

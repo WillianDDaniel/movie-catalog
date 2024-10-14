@@ -2,16 +2,24 @@
 
   <h2 class='section-title'>Cadastrar novo Diretor</h2>
 
-  <%= form_with model: Director.new , html: { class: "form" } do |f| %>
+  <div class="error">
+    <% if flash[:errors] %>
+      <p>
+        <%= format_error_messages(flash[:errors]) %>
+      </p>
+    <% end %>
+  </div>
+
+  <%= form_with model: @director , local: true, html: { class: "form director-form" } do |f| %>
 
     <div class="name">
       <%= f.label :name, "Nome do Diretor:" %>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, placeholder: "Digite o nome do Diretor" %>
     </div>
 
     <div class="country">
       <%= f.label :nacionality, "Nacionalidade:" %>
-      <%= f.text_field :nacionality %>
+      <%= f.text_field :nacionality, placeholder: "Digite a nacionalidade" %>
     </div>
 
     <div class="date">
@@ -21,11 +29,11 @@
 
     <div class="genre">
       <%= f.label :favorite_genre_id, "Gênero Favorito:" %>
-      <%= f.select :favorite_genre_id, @genres.map { |g| [g.name, g.id] }, :prompt => "Selecione" %>
+      <%= f.select :favorite_genre_id, Genre.all.map { |g| [g.name, g.id] }, :prompt => "Selecione" %>
     </div>
 
     <div class="submit">
-      <%= f.submit "Criar", class: "submit-button" %>
+      <%= f.submit "Cadastrar", class: "submit-button main-button" %>
     </div>
 
   <% end %>

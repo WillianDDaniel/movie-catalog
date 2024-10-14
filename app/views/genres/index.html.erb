@@ -2,7 +2,7 @@
 
   <div class='section-header'>
     <h2>Catálogo de Gêneros</h2>
-    <%= link_to "Adicionar gênero", new_genre_path %>
+    <%= link_to "Adicionar gênero", new_genre_path, class: "main-button" %>
   </div>
 
   <% if @genres.empty? %>
@@ -12,7 +12,7 @@
       <br>
 
       <p class='be-the-first'>Seja o primeiro a cadastrar um gênero no sistema.</p>
-      <%= link_to "Adicionar um novo gênero", new_genre_path %>
+      <%= link_to "Adicionar um novo gênero", new_genre_path, class: "main-button" %>
     </div>
   <% end %>
 

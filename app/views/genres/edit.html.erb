@@ -1,20 +1,13 @@
-<div class="genres-container">
-  <h2>Editar Gênero</h2>
+<div class="section-container align-center">
+  <h2 class="section-title">Editar Gênero</h2>
 
-  <%= link_to genres_path, class: "back-link" do %>
-    <div class='back'>
-      <img src="/imgs/blue-back-arrow.png" alt="Voltar">
-      Voltar
-    </div>
-  <% end %>
-
-  <%= form_with model: @genre do |form| %>
-    <div>
+  <%= form_with model: @genre, html: { class: "form" } do |form| %>
+    <div class="name">
       <%= form.label :name, "Nome do Gênero" %>
       <%= form.text_field :name %>
     </div>
-    <div>
-      <%= form.submit "Salvar", class: "btn-save" %>
+    <div class="submit">
+      <%= form.submit "Salvar", class: "submit-button main-button" %>
     </div>
   <% end %>
 </div>
