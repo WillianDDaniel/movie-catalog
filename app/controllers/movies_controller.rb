@@ -16,13 +16,18 @@ class MoviesController < ApplicationController
   def create
     @movie = Movie.new(movie_params)
 
+    # name = @movie.title
+    # year = 1999
+
+    # sinopsis = @movie.movie_synopsis(name, year)
+
+    # print sinopsis
+
     if @movie.save
       redirect_to @movie
     else
       @movie.valid?
-      @errors = @movie.errors.messages
-
-      flash.now[:errors] = @errors
+      flash.now[:errors] = @movie.errors.messages
 
       render :new, status: :unprocessable_entity
     end
@@ -35,15 +40,12 @@ class MoviesController < ApplicationController
   def update
     @movie = Movie.find(params[:id])
 
-    puts @movie.valid?
-
-    @errors = @movie.errors.messages
-
-    puts @errors
-
     if @movie.update(movie_params)
       redirect_to movie_path(@movie)
     else
+      @movie.valid?
+      flash.now[:errors] = @movie.errors.messages
+
       render :edit, status: :unprocessable_entity
     end
   end
@@ -51,6 +53,7 @@ class MoviesController < ApplicationController
   def destroy
     @movie = Movie.find(params[:id])
     if @movie.delete
+      flash[:success] = "Filme excluído com sucesso."
       redirect_to movies_path
     end
   end

@@ -46,6 +46,9 @@ gem "bootsnap", require: false
 
 # This gem helps to create a list of countries
 gem 'countries'
+gem 'http'
+gem 'json'
+gem 'dotenv'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

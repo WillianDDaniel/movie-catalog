@@ -5,6 +5,22 @@
     <%= link_to "Adicionar diretor", new_director_path, class: "main-button" %>
   </div>
 
+  <div class="error">
+    <% if flash[:errors] %>
+      <p>
+        <%= flash[:errors] %>
+      </p>
+    <% end %>
+  </div>
+
+  <div class="success">
+    <% if flash[:success] %>
+      <p>
+        <%= flash[:success] %>
+      </p>
+    <% end %>
+  </div>
+
   <% if @directors.empty? %>
     <div class="no-content">
       <p class='no-content-message'>Nenhum diretor cadastrado.</p>

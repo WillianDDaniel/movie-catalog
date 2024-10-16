@@ -1,6 +1,14 @@
 <div class="section-container align-center">
   <h2 class="section-title">Editar Gênero</h2>
 
+  <div class="error">
+    <% if flash[:errors] %>
+      <p>
+        <%= format_error_messages(flash[:errors]) %>
+      </p>
+    <% end %>
+  </div>
+
   <%= form_with model: @genre, html: { class: "form" } do |form| %>
     <div class="name">
       <%= form.label :name, "Nome do Gênero" %>

@@ -85,3 +85,7 @@
     font-weight: 700;
     font-size: 0.85rem;
 }
+
+.genre-description {
+    padding: 10px 15px;
+}

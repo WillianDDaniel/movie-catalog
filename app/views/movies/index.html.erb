@@ -5,6 +5,14 @@
     <%= link_to "Adicionar filme", new_movie_path, class: "main-button" %>
   </div>
 
+  <div class="success">
+    <% if flash[:success] %>
+      <p>
+        <%= flash[:success] %>
+      </p>
+    <% end %>
+  </div>
+
   <% if @movies.empty? %>
     <div class="no-content">
       <p class='no-content-message'>Nenhum filme cadastrado.</p>

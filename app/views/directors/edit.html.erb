@@ -1,29 +1,38 @@
 <section class='section-container align-center'>
-    <h2 class='section-title'>Editar Diretor </h2>
+  <h2 class='section-title'>Editar Diretor </h2>
 
-    <%= form_with model: @director, html: { class: "form" } do |form| %>
-        <div class="name">
-            <%= form.label :name, "Nome" %>
-            <%= form.text_field :name %>
-        </div>
-
-        <div class="country">
-            <%= form.label :nacionality, "Nacionalidade" %>
-            <%= form.text_field :nacionality %>
-        </div>
-
-        <div class="date">
-            <%= form.label :birthdate, "Data de Nascimento" %>
-            <%= form.date_field :birthdate %>
-        </div>
-
-        <div class="genre">
-            <%= form.label :favorite_genre_id, "Gênero Favorito" %>
-            <%= form.collection_select :favorite_genre_id, Genre.order(:name), :id, :name %>
-        </div>
-
-        <div class="submit">
-            <%= form.submit "Salvar", class: "submit-button main-button" %>
-        </div>
+  <div class="error">
+    <% if flash[:errors] %>
+      <p>
+        <%= format_error_messages(flash[:errors]) %>
+      </p>
     <% end %>
+  </div>
+
+  <%= form_with model: @director, html: { class: "form" } do |form| %>
+    <div class="name">
+      <%= form.label :name, "Nome" %>
+      <%= form.text_field :name %>
+    </div>
+
+    <div class="country">
+      <%= form.label :nacionality, "Nacionalidade" %>
+      <%= form.text_field :nacionality %>
+    </div>
+
+    <div class="date">
+      <%= form.label :birthdate, "Data de Nascimento" %>
+      <%= form.date_field :birthdate %>
+    </div>
+
+    <div class="genre">
+      <%= form.label :favorite_genre_id, "Gênero Favorito" %>
+      <%= form.collection_select :favorite_genre_id, Genre.order(:name), :id, :name %>
+    </div>
+
+    <div class="submit">
+      <%= form.submit "Salvar", class: "submit-button main-button" %>
+    </div>
+
+  <% end %>
 </section>

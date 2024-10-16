@@ -14,6 +14,10 @@ class GenresController < ApplicationController
   def create
     @genre = Genre.new(name: params[:genre][:name])
 
+    description = @genre.genre_description(@genre.name)
+
+    @genre.description = description
+
     if @genre.save
       redirect_to root_path
     else
@@ -29,6 +33,9 @@ class GenresController < ApplicationController
     if @genre.update(name: params[:genre][:name])
       redirect_to @genre
     else
+      @genre.valid?
+      flash.now[:errors] = @genre.errors.messages
+
       render :edit, status: :unprocessable_entity
     end
   end
@@ -38,13 +45,18 @@ class GenresController < ApplicationController
   end
 
   def destroy
-    id = params[:id]
-    genre = Genre.find(id)
+    genre = Genre.find(params[:id])
 
-    if genre.delete
+    if genre.movies.any? || genre.directors.any?
+      flash[:errors] = "Existem filmes ou diretores associados a este gênero. Não pode ser removido."
+      redirect_to genres_path
+    else
+      genre.destroy
+      flash[:success] = "Gênero excluído com sucesso."
       redirect_to genres_path
     end
   end
+
 
   private
 

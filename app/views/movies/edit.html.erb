@@ -1,6 +1,14 @@
 <section class='section-container align-center'>
     <h2 class='section-title'>Editar Filme</h2>
 
+  <div class="error">
+    <% if flash[:errors] %>
+      <p>
+        <%= format_error_messages(flash[:errors]) %>
+      </p>
+    <% end %>
+  </div>
+
     <%= form_with model: @movie, html: { class: "form" } do |f| %>
 
       <div class="name">

@@ -5,6 +5,22 @@
     <%= link_to "Adicionar gênero", new_genre_path, class: "main-button" %>
   </div>
 
+  <div class="error">
+    <% if flash[:errors] %>
+      <p>
+        <%= flash[:errors] %>
+      </p>
+    <% end %>
+  </div>
+
+  <div class="success">
+    <% if flash[:success] %>
+      <p>
+        <%= flash[:success] %>
+      </p>
+    <% end %>
+  </div>
+
   <% if @genres.empty? %>
     <div class="no-content">
       <p class='no-content-message'>Nenhum gênero cadastrado.</p>
@@ -23,6 +39,7 @@
         <div class='index-card'>
 
           <h3><%= genre.name %></h3>
+          <p class='genre-description'><%= truncate(genre.description, length: 230) %></p>
 
           <div class='index-actions'>
             <%= link_to "Ver detalhes", genre_path(genre), class: "btn-details" %>

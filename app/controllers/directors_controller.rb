@@ -16,6 +16,7 @@ class DirectorsController < ApplicationController
       @errors = @director.errors.messages
 
       flash.now[:errors] = @errors
+      puts @errors
 
       render :new, status: :unprocessable_entity
     end
@@ -23,10 +24,14 @@ class DirectorsController < ApplicationController
 
   def destroy
     @director = Director.find(params[:id])
-    if @director.delete
+
+    if @director.movies.any?
+      flash[:errors] = "Existem filmes associados a este diretor. Não pode ser removido."
       redirect_to directors_path
     else
-      render :new, status: :unprocessable_entity
+      @director.destroy
+      flash[:success] = "Diretor excluído com sucesso."
+      redirect_to directors_path
     end
   end
 
@@ -43,6 +48,9 @@ class DirectorsController < ApplicationController
     if @director.update(director_params)
       redirect_to @director
     else
+      @director.valid?
+      flash.now[:errors] = @director.errors.messages
+
       render :edit, status: :unprocessable_entity
     end
   end
