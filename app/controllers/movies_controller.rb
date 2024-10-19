@@ -1,11 +1,11 @@
 class MoviesController < ApplicationController
+  before_action :set_movie, only: [:show, :edit, :update, :destroy]
+
   def index
     @movies = Movie.where(isSketch: false)
   end
 
-  def show
-    @movie = Movie.find(params[:id])
-  end
+  def show ; end
 
   def new
     @movie = Movie.new
@@ -33,13 +33,9 @@ class MoviesController < ApplicationController
     end
   end
 
-  def edit
-    @movie = Movie.find(params[:id])
-  end
+  def edit ; end
 
   def update
-    @movie = Movie.find(params[:id])
-
     if @movie.update(movie_params)
       redirect_to movie_path(@movie)
     else
@@ -51,7 +47,6 @@ class MoviesController < ApplicationController
   end
 
   def destroy
-    @movie = Movie.find(params[:id])
     if @movie.delete
       flash[:success] = "Filme excluído com sucesso."
       redirect_to movies_path
@@ -63,4 +58,7 @@ class MoviesController < ApplicationController
     params.require(:movie).permit(:title, :year, :country, :synopsis, :isSketch, :duration, :director_id, :genre_id, :cover_url)
   end
 
+  def set_movie
+    @movie = Movie.find(params[:id])
+  end
 end

@@ -1,0 +1,13 @@
+pt-BR:
+  activerecord:
+    models:
+      movie: "Filme"
+    attributes:
+      movie:
+        title: "Nome do Filme"
+        synopsis: "Sinopse"
+        year: "Ano de Lançamento"
+        duration: "Duração"
+        cover_url: "URL da Capa"
+        director_id: "Diretor"
+        genre_id: "Gênero"

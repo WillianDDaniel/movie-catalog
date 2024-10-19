@@ -1,14 +1,14 @@
 class GenresController < ApplicationController
+  before_action :set_genre, only: [:show, :edit, :update, :destroy]
 
   def index
     @genres = Genre.all
   end
+
+  def show ; end
+
   def new
     @genre = Genre.new
-  end
-
-  def edit
-    @genre = Genre.find(params[:id])
   end
 
   def create
@@ -19,7 +19,7 @@ class GenresController < ApplicationController
     @genre.description = description
 
     if @genre.save
-      redirect_to root_path
+      redirect_to genres_path
     else
       @genre.valid?
       flash.now[:errors] = @genre.errors.messages
@@ -28,8 +28,9 @@ class GenresController < ApplicationController
     end
   end
 
+  def edit ; end
+
   def update
-    @genre = Genre.find(params[:id])
     if @genre.update(name: params[:genre][:name])
       redirect_to @genre
     else
@@ -39,19 +40,13 @@ class GenresController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
-  def show
-    id = params[:id]
-    @genre = Genre.find(id)
-  end
 
   def destroy
-    genre = Genre.find(params[:id])
-
-    if genre.movies.any? || genre.directors.any?
+    if @genre.movies.any? || @genre.directors.any?
       flash[:errors] = "Existem filmes ou diretores associados a este gênero. Não pode ser removido."
       redirect_to genres_path
     else
-      genre.destroy
+      @genre.destroy
       flash[:success] = "Gênero excluído com sucesso."
       redirect_to genres_path
     end
@@ -59,6 +54,8 @@ class GenresController < ApplicationController
 
 
   private
-
+  def set_genre
+    @genre = Genre.find(params[:id])
+  end
 end
 

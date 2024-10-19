@@ -1,0 +1,7 @@
+pt-BR:
+  activerecord:
+    models:
+      genre: "Gênero"
+    attributes:
+      genre:
+        name: "Nome do Gênero"

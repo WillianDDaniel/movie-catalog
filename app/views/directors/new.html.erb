@@ -13,7 +13,7 @@
   <%= form_with model: @director , local: true, html: { class: "form director-form" } do |f| %>
 
     <div class="name">
-      <%= f.label :name, "Nome do Diretor:" %>
+      <%= f.label :name %>
       <%= f.text_field :name, placeholder: "Digite o nome do Diretor" %>
     </div>
 

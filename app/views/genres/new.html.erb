@@ -10,7 +10,7 @@
     <% end %>
   </div>
 
-  <%= form_with model: Genre.new, html: { class: "form genre-form" } do |form| %>
+  <%= form_with model: @genre, html: { class: "form genre-form" } do |form| %>
 
     <div class="name">
       <%= form.label :name, "Nome do Gênero:" %>

@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    models:
+      director: "Diretor"
+    attributes:
+      director:
+        name: "Nome do Diretor"
+        nacionality: "Nacionalidade"
+        birthdate: "Data de Nascimento"
+        favorite_genre_id: "Gênero Favorito"
+
