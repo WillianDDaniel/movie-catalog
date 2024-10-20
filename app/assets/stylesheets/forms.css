@@ -62,3 +62,9 @@
 .form .submit {
     width: 90%;
 }
+
+.form-error {
+    color: rgb(204, 69, 69);
+    font-size: 0.8rem;
+    padding: 2px 0 2px 5px;
+}

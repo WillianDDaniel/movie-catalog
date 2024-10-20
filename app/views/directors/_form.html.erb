@@ -2,13 +2,13 @@
   <div class="name">
     <%= form.label :name %>
     <%= form.text_field :name %>
-    <% if @errors %><%= @errors[:name].first %><% end %>
+    <p class="form-error"><% if @errors %><%= @errors[:name].first %><% end %></p>
   </div>
 
   <div class="country">
     <%= form.label :nacionality %>
     <%= form.text_field :nacionality %>
-    <% if @errors %><%= @errors[:nacionality].first %><% end %>
+    <p class="form-error"><% if @errors %><%= @errors[:nacionality].first %><% end %></p>
   </div>
 
   <div class="date">
@@ -23,7 +23,7 @@
       Genre.order(:name), :id, :name, prompt: "Selecione"
     %>
 
-    <% if @errors %><%= @errors[:favorite_genre_id].first %><% end %>
+    <p class="form-error"><% if @errors %><%= @errors[:favorite_genre_id].first %><% end %></p>
   </div>
 
   <div class="submit">
