@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_15_054619) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_20_065701) do
   create_table "directors", force: :cascade do |t|
     t.string "name"
     t.string "nacionality"
@@ -19,6 +19,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_15_054619) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["favorite_genre_id"], name: "index_directors_on_favorite_genre_id"
+  end
+
+  create_table "genre_descriptions", force: :cascade do |t|
+    t.string "genre_name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "genres", force: :cascade do |t|
