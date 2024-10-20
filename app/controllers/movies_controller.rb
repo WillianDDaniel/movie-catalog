@@ -16,13 +16,6 @@ class MoviesController < ApplicationController
   def create
     @movie = Movie.new(movie_params)
 
-    # name = @movie.title
-    # year = 1999
-
-    # sinopsis = @movie.movie_synopsis(name, year)
-
-    # print sinopsis
-
     if @movie.save
       redirect_to @movie
     else
@@ -58,15 +51,22 @@ class MoviesController < ApplicationController
   end
 
   def destroy
-    if @movie.delete
+    if @movie.destroy
       flash[:success] = "Filme excluído com sucesso."
       redirect_to movies_path
+    else
+      flash.now[:errors] = "Erro inesperado ao excluir o filme. Por favor, tente novamente."
+      @movie.valid?
+      render :show
     end
   end
 
   private
   def movie_params
-    params.require(:movie).permit(:title, :year, :country, :synopsis, :isSketch, :duration, :director_id, :genre_id, :cover_url)
+    params.require(:movie).permit(
+      :title, :year, :country, :synopsis, :isSketch,
+      :duration, :director_id, :genre_id, :cover_url
+    )
   end
 
   def set_movie
