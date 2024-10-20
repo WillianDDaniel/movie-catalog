@@ -126,8 +126,9 @@
 
 .genre-card {
     padding-bottom: 20px;
+    box-shadow: 2px 2px 7px 0px rgba(22, 194, 206, 0.08);
 }
 
 .genre-card:hover {
-    border: 1px solid rgba(32, 197, 32, 0.7);
+    border: 1px solid rgba(19, 163, 173, 0.7);
 }
