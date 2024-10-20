@@ -124,11 +124,33 @@
     margin-right: 3px;
 }
 
-.genre-card {
+.genre-card, .director-card {
     padding-bottom: 20px;
     box-shadow: 2px 2px 7px 0px rgba(22, 194, 206, 0.08);
 }
 
-.genre-card:hover {
+.genre-card:hover, .director-card:hover {
     border: 1px solid rgba(19, 163, 173, 0.7);
+}
+
+.index-director-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+    flex: 1;
+    box-shadow: 1px 1px 7px 0px rgba(22, 194, 206, 0.05);
+    border: 1px solid rgba(22, 194, 206, 0.07);
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.index-director-info strong {
+    color: rgb(150, 247, 250);
+}
+
+.director-main-button {
+    margin-top: 20px;
 }

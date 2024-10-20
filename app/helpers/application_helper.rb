@@ -12,4 +12,13 @@ module ApplicationHelper
     end.uniq.to_sentence(last_word_connector: ' e ')
 
   end
+
+  def title_font_size_class(title)
+    case title.length
+    when 0..15
+      'text-normal'
+    else
+      'text-small'
+    end
+  end
 end

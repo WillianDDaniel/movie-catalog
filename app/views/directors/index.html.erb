@@ -36,13 +36,26 @@
     <div class='index-container'>
 
       <% @directors.each do |director| %>
-        <div class='index-card'>
-          <h3><%= director.name %></h3>
+        <div class='index-card director-card'>
+
+          <h3 class="<%= title_font_size_class(director.name) %>">
+            <%= director.name %>
+          </h3>
+
+          <div class='index-director-info'>
+            <p><strong>Nacionalidade:</strong> <%= director.nacionality %></p>
+            <p><strong>Gênero Favorito:</strong> <%= director.favorite_genre.name %></p>
+
+            <% if director.birthdate %>
+              <p>
+                <strong>Data de Nascimento:</strong>
+                <%= I18n.l(director.birthdate) %>
+              </p>
+            <% end %>
+          </div>
 
           <div class='index-actions'>
-            <%= link_to "Ver detalhes", director_path(director), class: "btn-details" %>
-            <%= link_to "Editar", edit_director_path(director), class: "btn-edit" %>
-            <%= link_to "Excluir", director_path(director), class: "btn-delete", data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja excluir este diretor?" } %>
+            <%= link_to "Ver detalhes", director_path(director), class: "main-button" %>
           </div>
 
         </div>
