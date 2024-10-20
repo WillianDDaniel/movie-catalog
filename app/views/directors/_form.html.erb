@@ -1,0 +1,32 @@
+<%= form_with model: @director, html: { class: "form" } do |form| %>
+  <div class="name">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+    <% if @errors %><%= @errors[:name].first %><% end %>
+  </div>
+
+  <div class="country">
+    <%= form.label :nacionality %>
+    <%= form.text_field :nacionality %>
+    <% if @errors %><%= @errors[:nacionality].first %><% end %>
+  </div>
+
+  <div class="date">
+    <%= form.label :birthdate %>
+    <%= form.date_field :birthdate %>
+  </div>
+
+  <div class="genre">
+    <%= form.label :favorite_genre_id %>
+
+    <%= form.collection_select :favorite_genre_id,
+      Genre.order(:name), :id, :name, prompt: "Selecione"
+    %>
+
+    <% if @errors %><%= @errors[:favorite_genre_id].first %><% end %>
+  </div>
+
+  <div class="submit">
+    <%= form.submit "Cadastrar", class: "submit-button main-button" %>
+  </div>
+<% end %>

@@ -96,7 +96,7 @@ describe 'new_movie_path' do
       expect(page).to have_field('Sinopse')
       expect(page).to have_field('Duração')
       expect(page).to have_field('Diretor')
-      expect(page).to have_field('Url da Capa')
+      expect(page).to have_field('URL da Capa')
       expect(page).to have_field('Salvar como Rascunho')
 
       expect(page).to have_button('Cadastrar')

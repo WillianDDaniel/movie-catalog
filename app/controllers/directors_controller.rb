@@ -18,7 +18,8 @@ class DirectorsController < ApplicationController
       redirect_to @director
     else
       @director.valid?
-      flash.now[:errors] = @director.errors.messages
+      flash.now[:errors] = 'Os seguintes campos não podem ficar vazios: '
+      @errors = @director.errors.messages
 
       render :new, status: :unprocessable_entity
     end
@@ -31,7 +32,8 @@ class DirectorsController < ApplicationController
       redirect_to @director
     else
       @director.valid?
-      flash.now[:errors] = @director.errors.messages
+      flash.now[:errors] = 'Os seguintes campos não podem ficar vazios: '
+      @errors = @director.errors.messages
 
       render :edit, status: :unprocessable_entity
     end

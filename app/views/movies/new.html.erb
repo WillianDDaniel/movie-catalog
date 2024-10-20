@@ -4,14 +4,14 @@
   <div class="error">
     <% if flash[:errors] %>
       <p>
-        <%= format_error_messages(flash[:errors]) %>
+        <%= flash[:errors] + format_errors(@errors, "movie") %>
       </p>
     <% end %>
   </div>
 
-  <% if Genre.all.empty? || Director.all.empty? %>
+  <% if @genres.empty? || @directors.empty?%>
 
-    <% both_empty = Genre.all.empty? && Director.all.empty? %>
+    <% both_empty = @genres.empty? && @directors.empty? %>
     <% message = Genre.all.empty? ? "Nenhum gênero encontrado." : "Nenhum diretor encontrado." %>
     <% message = "Nenhum gênero ou diretor encontrado." if both_empty %>
 
@@ -20,68 +20,16 @@
       <p class='done-it-first'>Para cadastrar um filme, primeiro cadastre pelo menos um gênero e um diretor.</p>
 
       <div class='no-content-buttons'>
-        <%= link_to "Cadastrar gênero", new_genre_path, class: "main-button" if Genre.all.empty? %>
-        <%= link_to "Cadastrar diretor", new_director_path, class: "main-button" if Director.all.empty? %>
+        <%= link_to "Cadastrar gênero", new_genre_path, class: "main-button" if @genres.empty? %>
+        <%= link_to "Cadastrar diretor", new_director_path, class: "main-button" if @directors.empty? %>
       </div>
-
     </div>
 
   <% end %>
 
-  <% if Genre.all.any? && Director.all.any? %>
+  <% if @genres.any? && @directors.any? %>
 
-    <%= form_with model: Movie.new, html: { class: "form" } do |f| %>
-
-      <div class="name">
-        <%= f.label :title, "Nome do Filme:" %>
-        <%= f.text_field :title, placeholder: "Digite o nome do Filme" %>
-      </div>
-
-      <div class="country">
-        <%= f.label :country, "País:" %>
-        <%= f.select :country, countries_for_select, prompt: "Selecione um país" %>
-      </div>
-
-      <div class="duration">
-        <%= f.label :duration, "Duração (min):" %>
-        <%= f.number_field :duration %>
-      </div>
-
-      <div class="director">
-        <%= f.label :director_id , "Diretor:" %>
-        <%= f.select :director_id , Director.all.map { |d| [d.name, d.id] }, :prompt => "Selecione" %>
-      </div>
-
-      <div class="genre">
-        <%= f.label :genre_id, "Gênero:" %>
-        <%= f.select :genre_id, Genre.all.map { |g| [g.name, g.id] }, :prompt => "Selecione" %>
-      </div>
-
-      <div class="year">
-        <%= f.label :year, "Ano de Lançamento:" %>
-        <%= f.date_field :year %>
-      </div>
-
-      <div class="cover-url">
-        <%= f.label :cover_url, "Url da Capa:" %>
-        <%= f.text_field :cover_url, placeholder: "Digite a URL da Capa" %>
-      </div>
-
-      <div class="is-sketch">
-        <%= f.check_box :isSketch %>
-        <%= f.label :isSketch, "Salvar como Rascunho" %>
-      </div>
-
-      <div class="synopsis">
-        <%= f.label :synopsis, "Sinopse:" %>
-        <%= f.text_area :synopsis, rows: 4 %>
-      </div>
-
-      <div class="submit">
-        <%= f.submit "Cadastrar", class: "submit-button main-button" %>
-      </div>
-
-    <% end %>
+    <%= render partial: "form" %>
   <% end %>
 
 </section>

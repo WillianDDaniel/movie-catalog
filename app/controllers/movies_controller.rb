@@ -27,20 +27,31 @@ class MoviesController < ApplicationController
       redirect_to @movie
     else
       @movie.valid?
-      flash.now[:errors] = @movie.errors.messages
+      flash.now[:errors] = 'Os seguintes campos não podem ficar vazios: '
+      @errors = @movie.errors.messages
+
+      @genres = Genre.all
+      @directors = Director.all
 
       render :new, status: :unprocessable_entity
     end
   end
 
-  def edit ; end
+  def edit
+    @genres = Genre.all
+    @directors = Director.all
+  end
 
   def update
     if @movie.update(movie_params)
       redirect_to movie_path(@movie)
     else
       @movie.valid?
-      flash.now[:errors] = @movie.errors.messages
+      flash.now[:errors] = 'Os seguintes campos não podem ficar vazios: '
+      @errors = @movie.errors.messages
+
+      @genres = Genre.all
+      @directors = Director.all
 
       render :edit, status: :unprocessable_entity
     end

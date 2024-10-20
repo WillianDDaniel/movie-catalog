@@ -1,0 +1,58 @@
+<%= form_with model: @movie, html: { class: "form" } do |f| %>
+
+  <div class="name">
+    <%= f.label :title %>
+    <%= f.text_field :title, placeholder: "Digite o nome do Filme" %>
+  </div>
+
+  <div class="country">
+    <%= f.label :country %>
+    <%= f.select :country, countries_for_select, prompt: "Selecione um país" %>
+  </div>
+
+  <div class="duration">
+    <%= f.label :duration, "Duração (Minutos):" %>
+    <%= f.number_field :duration %>
+  </div>
+
+  <div class="director">
+    <%= f.label :director_id %>
+
+    <%= f.collection_select :director_id,
+      @directors.order(:name), :id, :name, :prompt => "Selecione"
+    %>
+  </div>
+
+  <div class="genre">
+    <%= f.label :genre_id %>
+
+    <%= f.collection_select :genre_id,
+      @genres.order(:name), :id, :name, :prompt => "Selecione"
+    %>
+  </div>
+
+  <div class="year">
+    <%= f.label :year %>
+    <%= f.select :year, (1895..Date.today.year + 5).to_a.reverse, prompt: "Selecione o ano" %>
+  </div>
+
+  <div class="cover-url">
+    <%= f.label :cover_url %>
+    <%= f.text_field :cover_url, placeholder: "Digite a URL da Capa" %>
+  </div>
+
+  <div class="is-sketch">
+    <%= f.check_box :isSketch %>
+    <%= f.label :isSketch, "Salvar como Rascunho" %>
+  </div>
+
+  <div class="synopsis">
+    <%= f.label :synopsis %>
+    <%= f.text_area :synopsis, rows: 4 %>
+  </div>
+
+  <div class="submit">
+    <%= f.submit "Cadastrar", class: "submit-button main-button" %>
+  </div>
+
+<% end %>

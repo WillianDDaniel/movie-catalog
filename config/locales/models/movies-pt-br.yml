@@ -11,3 +11,6 @@ pt-BR:
         cover_url: "URL da Capa"
         director_id: "Diretor"
         genre_id: "Gênero"
+        country: "País"
+        genre: "Gênero"
+        director: "Diretor"
