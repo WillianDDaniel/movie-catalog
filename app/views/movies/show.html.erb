@@ -3,11 +3,12 @@
 
   <div class='movie-details'>
 
-    <img src="<%= @movie.cover_url %>" alt="Capa de <%= @movie.title %>">
+    <img
+      src="<%=@movie.cover_url != '' ? @movie.cover_url : '/imgs/no-cover.jpg' %>"
+      alt="Capa de <%= @movie.title %>"
+    >
 
     <div class='movie-info'>
-
-      <h3>Informações sobre o Filme</h3>
 
       <div class='movie-actions'>
         <%= link_to "Editar", edit_movie_path(@movie), class: "btn-edit" %>

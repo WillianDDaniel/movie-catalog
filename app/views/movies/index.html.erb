@@ -48,7 +48,9 @@
             <div class="flip-card-inner">
 
               <div class="flip-card-front">
-                <%= image_tag movie.cover_url, alt: "Capa de #{movie.title}" %>
+                <%= image_tag (movie.cover_url != '' ? movie.cover_url : '/imgs/no-cover.jpg'),
+                  alt: "Capa de #{movie.title}"
+                %>
               </div>
 
               <div class="flip-card-back cover-card-back">
