@@ -36,19 +36,19 @@
     <div class='index-container'>
 
       <% @genres.each do |genre| %>
-        <div class='index-card'>
+        <div class='index-card genre-card'>
 
-          <h3><%= genre.name %></h3>
-          <p class='genre-description'><%= truncate(genre.description, length: 230) %></p>
+          <h3><%= link_to genre.name, genre_path(genre) %></h3>
+
+          <div class='description-text-genre'>
+            <img src="/imgs/ia.png">
+            Descrição gerada por AI
+          </div>
+
+          <p class='genre-description'><%= truncate(genre.description, length: 150, separator: " ") %></p>
 
           <div class='index-actions'>
-            <%= link_to "Ver detalhes", genre_path(genre), class: "btn-details" %>
-            <%= link_to "Editar", edit_genre_path(genre), class: "btn-edit" %>
-
-            <%= link_to "Excluir", genre_path(genre), class: "btn-delete",
-              data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja excluir este gênero?" }
-            %>
-
+            <%= link_to "Ver detalhes", genre_path(genre), class: "main-button" %>
           </div>
 
         </div>

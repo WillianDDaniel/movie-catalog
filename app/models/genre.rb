@@ -11,7 +11,7 @@ class Genre < ApplicationRecord
     if GenreDescription.exists?(genre_name: genre_name)
       GenreDescription.find_by(genre_name: genre_name).description
     else
-      prompt = "Descreva o gênero #{genre_name} com no máximo 450 caracteres."
+      prompt = "Descreva o gênero de filmes #{genre_name} com no máximo 450 caracteres."
       GeminiService.generate_description(prompt)
     end
   end
