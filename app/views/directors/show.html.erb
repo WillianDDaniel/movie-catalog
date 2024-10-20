@@ -20,6 +20,7 @@
 
       <% if @director.movies.empty? %>
         <p>Nenhum filme cadastrado para este diretor.</p>
+        <%= link_to "Adicionar um novo filme", new_movie_path, class: "main-button" %>
       <% end %>
 
       <% @director.movies.each do |movie| %>
