@@ -4,14 +4,27 @@
     justify-content: center;
     flex-wrap: wrap;
     width: 100%;
+    gap: 10px 20px;
 }
 
 .genre-title {
     text-align: center;
-    margin-bottom: 20px;
+    margin: 15px 0 10px 0;
     width: 100%;
 }
 
-.no-movies {
-    margin-bottom: 20px;
+.genre-description-show {
+    padding: 15px 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+
+.genre-actions-container {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    margin-bottom: 7px;
+    gap: 7px;
+    border-radius: 5px;
+    padding-right: 7px;
 }

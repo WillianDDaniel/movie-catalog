@@ -60,6 +60,10 @@ main {
     margin-top: 35px;
 }
 
+.no-content-genre {
+    margin-top: 10px;
+}
+
 .no-content-message {
     font-size: 1.1rem;
     font-weight: 500;

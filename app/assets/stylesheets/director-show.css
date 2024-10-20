@@ -48,11 +48,12 @@
 .movie-link {
     text-decoration: none;
     color: #fff;
+    border: 1px solid transparent;
 }
 
 .movie-link:hover {
-    transform: scale(1.02);
-    border: 1px solid #11d;
+    border: 1px solid rgba(19, 163, 173, 0.7);
+    border-radius: 5px;
 }
 
 .movie-card {

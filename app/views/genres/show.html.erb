@@ -2,12 +2,19 @@
 
   <h2 class='section-title'>Gênero <%= @genre.name %></h2>
 
+  <div class='genre-actions-container'>
+    <%= link_to "Editar", edit_genre_path(@genre), class: "btn-edit" %>
+    <%= link_to "Excluir", genre_path(@genre), class: "btn-delete", data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja excluir este gênero?" } %>
+  </div>
+
+  <p class='genre-description-show'><%= @genre.description %></p>
+
   <div class='genre-container'>
-    <h3 class='genre-title'>Filmes do Gênero</h3>
+    <h3 class='genre-title'>Filmes deste Gênero</h3>
 
     <% if @genre.movies.empty? %>
 
-      <div class='no-content'>
+      <div class='no-content no-content-genre'>
         <p class='no-movies'>Nenhum filme cadastrado para este gênero.</p>
 
         <p class='be-the-first'>Seja o primeiro a cadastrar um filme deste gênero no sistema.</p>
@@ -18,12 +25,19 @@
     <% end %>
 
     <% @genre.movies.each do |movie| %>
+
       <%= link_to movie_path(movie), class: "movie-link" , title: "Ver detalhes de #{movie.title}" do %>
+
         <div class='movie-card'>
-          <%= movie.title %>
-          <img src="<%= movie.cover_url %>" alt="Capa de <%= movie.title %>"/>
+          <%= truncate(movie.title, length: 25 ) %>
+
+          <%= image_tag (movie.cover_url != '' ? movie.cover_url : '/imgs/no-cover.jpg'),
+            alt: "Capa de #{movie.title}"
+          %>
+
           <%= "Ver detalhes" %>
         </div>
+
       <% end %>
     <% end %>
 
