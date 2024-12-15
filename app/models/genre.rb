@@ -4,7 +4,15 @@ class Genre < ApplicationRecord
 
   validates :name, presence: true
 
-  def find_description(genre_name)
+  def self.search_by_english_name(genre_name)
+    genre_name = I18n.t("genres.#{genre_name.downcase}")
+
+    description = self.find_description(genre_name)
+
+    self.find_or_create_by(name: genre_name, description: description)
+  end
+
+  def self.find_description(genre_name)
 
     genre_name = normalize_string(genre_name)
 
@@ -17,7 +25,7 @@ class Genre < ApplicationRecord
   end
 
   private
-  def normalize_string(str)
+  def self.normalize_string(str)
     UnicodeUtils.downcase(str).tr("áàãâéêíóôõúüç", "aaaaeeiouuc")
   end
 end

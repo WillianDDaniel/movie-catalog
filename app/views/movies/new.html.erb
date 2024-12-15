@@ -9,6 +9,8 @@
     <% end %>
   </div>
 
+  <%= render partial: "auto_fetch" %>
+
   <% if @genres.empty? || @directors.empty?%>
 
     <% both_empty = @genres.empty? && @directors.empty? %>

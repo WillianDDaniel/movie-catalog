@@ -11,23 +11,36 @@ class MoviesController < ApplicationController
     @movie = Movie.new
     @genres = Genre.all
     @directors = Director.all
+
+    @movie_api_info = false
   end
 
   def create
-    @movie = Movie.new(movie_params)
-
-    if @movie.save
-      redirect_to @movie
-    else
-      @movie.valid?
-      flash.now[:errors] = 'Os seguintes campos não podem ficar vazios: '
-      @errors = @movie.errors.messages
+    if params[:auto_fetch]
+      @movie_api_info = true
 
       @genres = Genre.all
       @directors = Director.all
 
+      @director, @genre, @movie = find_movie_info
+
       render :new, status: :unprocessable_entity
+
+    elsif params[:accept_fetch]
+
     end
+    # if @movie.save
+    #   redirect_to @movie
+    # else
+    #   @movie.valid?
+    #   flash.now[:errors] = 'Os seguintes campos não podem ficar vazios: '
+    #   @errors = @movie.errors.messages
+
+    #   @genres = Genre.all
+    #   @directors = Director.all
+
+    #   render :new, status: :unprocessable_entity
+    # end
   end
 
   def edit
@@ -71,5 +84,14 @@ class MoviesController < ApplicationController
 
   def set_movie
     @movie = Movie.find(params[:id])
+  end
+
+  def find_movie_info
+    title = params[:movie][:title]
+    year = params[:movie][:year]
+
+    movie = Movie.new(title: title, year: year)
+
+    Movie.search_movie_info_service(movie)
   end
 end

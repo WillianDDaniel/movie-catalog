@@ -3,47 +3,112 @@ require 'json'
 require 'dotenv/load'
 
 class TmdbService
-  MAX_RETRIES = 3
 
-  def self.search_movie(movie_name, year)
+  # This method searches for a movie in the TMDb API.
+  # It receives the movie name and the year to compare if multiple results are found.
+  def self.search_movie_info(movie)
+
+    # Base URL for the TMDb API
     base_url = "https://api.themoviedb.org/3/search/movie"
 
+    # Query parameters for the request, including the movie name and year
     query_params = {
-      query: movie_name,
+      query: movie.title,
       include_adult: false,
       language: 'pt-BR',
-      year: year
+      year: movie.year
     }
 
+    # Construct the URL with the query parameters
     url = "#{base_url}?#{URI.encode_www_form(query_params)}"
     headers = {
       'accept' => 'application/json',
       'Authorization' => "Bearer #{ENV['TMDB_API_KEY']}"
     }
 
-    retries = 0
-    begin
-      response = HTTP.get(url, headers: headers)
-      response_data = JSON.parse(response.body)
+    # Making the HTTP request to the TMDb API
+    response = HTTP.get(url, headers: headers)
+    response_data = JSON.parse(response.body)
 
-      if response_data["results"] && response_data["results"].any?
+    if response_data["results"].any?
+      movie_info = response_data["results"].first
 
-        results = response_data["results"].first
-        results["overview"]
-      else
-        raise "Nenhum filme encontrado ou resposta incompleta"
-      end
+      movie.synopsis = movie_info["overview"]
+      movie.title = movie_info["title"]
+      movie.original_title = movie_info["original_title"]
+    end
+  end
 
-    rescue => e
-      retries += 1
-      if retries < MAX_RETRIES
-        puts "Erro ao buscar filme: #{e.message}. Tentando novamente... (Tentativa #{retries})"
-        sleep(1)
-        retry
-      else
-        puts "Falha após #{MAX_RETRIES} tentativas: #{e.message}"
-        return nil
-      end
+  def self.search_director_by_name(director)
+
+    id = find_director_id(director.name)
+
+    # Base URL
+    base_url = "https://api.themoviedb.org/3/person/#{id}"
+
+    # Parâmeters
+    query_params = {
+      language: 'pt-BR'
+    }
+
+    # Make the URL with the query parameters
+    url = "#{base_url}?#{URI.encode_www_form(query_params)}"
+    headers = {
+      'accept' => 'application/json',
+      'Authorization' => "Bearer #{ENV['TMDB_API_KEY']}"
+    }
+
+    # Make the HTTP request to the TMDb API
+    response = HTTP.get(url, headers: headers)
+    response_data = JSON.parse(response.body)
+
+    if response_data
+
+      director.nacionality = extract_country(response_data["place_of_birth"])
+      director.birthdate = response_data["birthday"]
+      director.name = response_data["name"]
+
+      director
+    else
+      nil
+    end
+  end
+
+  private
+
+  def self.extract_country(place_of_birth)
+    place_of_birth.split(", ").last
+  end
+
+  def self.find_director_id(director_name)
+    # Base URL
+    base_url = "https://api.themoviedb.org/3/search/person"
+
+    # Parameters
+    query_params = {
+      query: director_name,
+      include_adult: false,
+      language: 'pt-BR'
+    }
+
+    # Build the URL with the query parameters
+    url = "#{base_url}?#{URI.encode_www_form(query_params)}"
+    headers = {
+      'accept' => 'application/json',
+      'Authorization' => "Bearer #{ENV['TMDB_API_KEY']}"
+    }
+
+    # Make the HTTP request to the TMDb API
+    response = HTTP.get(url, headers: headers)
+    response_data = JSON.parse(response.body)
+
+    if response_data["results"].any?
+      director_info = response_data["results"].first
+
+      director_info["id"]
+    else
+      nil
     end
   end
 end
+

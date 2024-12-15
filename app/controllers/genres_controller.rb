@@ -14,7 +14,7 @@ class GenresController < ApplicationController
   def create
     @genre = Genre.new(name: params[:genre][:name])
 
-    @genre.description = @genre.find_description(@genre.name) if @genre.name.present?
+    @genre.description = Genre.find_description(@genre.name) if @genre.name.present?
 
     if @genre.save
       redirect_to genres_path

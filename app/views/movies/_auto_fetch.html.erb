@@ -1,0 +1,51 @@
+<% if @movie_api_info %>
+  <div>
+    <p>Nome do Filme: <%= @movie.title %></p>
+    <p>Ano de Lancamento: <%= @movie.year %></p>
+    <p>País de Origem: <%= @movie.country %></p>
+    <p>Duração (min): <%= @movie.duration %></p>
+    <p>Gênero: <%= @genre.name %></p>
+    <p><%= @director.name %></p>
+    <p><%= @director.nacionality %></p>
+    <p><%= @director.birthdate %></p>
+    <p><%= @director.nacionality %></p>
+    <p><%= @director.favorite_genre.name %></p>
+    <%= image_tag @movie.cover_url %>
+
+    <div>
+      <p>Sinopse: <%= @movie.synopsis %></p>
+    </div>
+  </div>
+
+  <% # Parameters for form
+    director = { name: @director.name, nacionality: @director.nacionality,
+    birthdate: @director.birthdate, favorite_genre_id: @director.favorite_genre_id }
+
+    movie = { title: @movie.title, year: @movie.year, country: @movie.country,
+    duration: @movie.duration, synopsis: @movie.synopsis, cover_url: @movie.cover_url }
+  %>
+
+  <%= button_to "Aceitar Informações", Movie.new, class: "main-button",
+    params: { accept_fetch: true, genre: { id: @genre.id },
+      director: director, movie: movie,
+    }
+  %>
+
+<% end %>
+
+<%= form_with model: @movie, html: { class: "form" } do |f| %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title, placeholder: "Digite o nome do Filme" %>
+  </div>
+
+  <div>
+    <%= f.label :year %>
+    <%= f.text_field :year, placeholder: "Digite o ano do Filme" %>
+  </div>
+
+  <%= button_to 'Buscar', Movie.new, class: "submit-button main-button",
+    params: { auto_fetch: true }
+  %>
+
+<% end %>

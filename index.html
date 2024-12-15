@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exibir Imagens do Filme</title>
+</head>
+<body>
+  <h1>Imagens do Filme</h1>
+  <div>
+    <h2>Poster</h2>
+    <img id="poster" alt="Poster do Filme" width="300">
+  </div>
+  <div>
+    <h2>Backdrop</h2>
+    <img id="backdrop" alt="Backdrop do Filme" width="500">
+  </div>
+
+  <script>
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMTkyNWUyZjEyODViYTk2OTcxMzllOWY2YzdhYzM3YiIsIm5iZiI6MTcyOTQ0NjA1My44Mjk2NTEsInN1YiI6IjY3MGUxMjBiZDVmOTNhM2RhMGJjMjQzYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.n3E0xrG-GnJl-vlH6xa6Jz-n3fHX2qYwo_nyQ7sU84k'
+      }
+    };
+
+    fetch('https://api.themoviedb.org/3/movie/550?language=en-US', options)
+      .then(response => response.json())
+      .then(data => {
+        const baseImageUrl = 'https://image.tmdb.org/t/p/w500';
+
+        // Construindo as URLs das imagens
+        const posterUrl = `${baseImageUrl}${data.poster_path}`;
+        const backdropUrl = `${baseImageUrl}${data.backdrop_path}`;
+
+        const poster = `${baseImageUrl}/jADJRMcOGkGfaQDCTOHHmI3Ew8j.jpg`
+
+        // Exibindo as imagens no HTML
+        document.getElementById('poster').src = poster;
+        document.getElementById('backdrop').src = backdropUrl;
+      })
+      .catch(err => console.error(err));
+  </script>
+</body>
+</html>
